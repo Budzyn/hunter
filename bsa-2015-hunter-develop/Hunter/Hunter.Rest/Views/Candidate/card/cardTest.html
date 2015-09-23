@@ -1,0 +1,131 @@
+﻿<div ng-controller="CardTestController as testCtrl">
+
+    <div class="row">
+        <ul style="padding-left: 14px; margin-bottom: 10px;" class="nav nav-pills">
+            <li class="active" ng-if="testCtrl.vacancyId != undefined">
+                <a data-toggle="pill" ng-click="testCtrl.loadVacancyTests()">
+                    {{testCtrl.vacancy.name}}
+                </a>
+            </li>
+            <li class="{{testCtrl.vacancyId == undefined ? 'active' : ''}}"><a data-toggle="pill" ng-click="testCtrl.loadAllTests()">All Tests</a></li>
+        </ul>
+    </div>
+    <div class="row" ng-if="testCtrl.vacancyId != undefined">
+        <div class="col-md-5">
+            <input type="text" class="form-control testLink" placeholder="Provide link to test" ng-model="testCtrl.testLink"/>
+            <button class="btn btn-primary" ng-click="testCtrl.uploadLink()">Add</button>
+        </div>
+        <div class="col-md-7">
+            <input class="form-control filePath" type="text" readonly placeholder="Pick the file with test"
+                   ng-model="testCtrl.fileName"/>
+            <span class="file-input btn btn-primary btn-file">
+                Choose...<input type="file" multiple="" ng-file-change="testCtrl.onFileChanged">
+            </span>
+            <button class="btn btn-primary" ng-click="testCtrl.uploadFile()">Upload</button>
+        </div>
+    </div>
+    <br/>
+    <div class="wrapper"><br/>
+        <div class="row workArea-row" ng-repeat="test in testCtrl.test.tests | orderBy:'id':true">
+            <div class="row">
+                <div ng-show="test.file != null">
+                    <div class="col-md-1"><label>Task</label></div>
+                    <div class="col-md-10">
+
+						<a href="/api/file/download/{{test.file.id}}">{{test.file.fileName}}</a> Size: {{test.file.size}} Uploaded: {{test.file.added | date:'dd.MM.yyyy HH.mm'}}
+                        <button ng-if="(test.assignedUserProfile == null) && (test.isChecked == false)" ng-click="testCtrl.checkedTestId = test.id" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Add expert to test</button>
+                        <span ng-if="(test.assignedUserProfile != null) && (test.isChecked == false)">now checking {{test.assignedUserProfile.alias}}</span>
+                        <button ng-if="testCtrl.isCurrentUser(test.assignedUserProfile, test.isChecked)" class=" btn btn-default" ng-click="testCtrl.changeCheckedTest(test.id)">Checked!</button>
+                    </div>
+                    <div class="col-md-1">
+                        <i class="btn" ng-disabled="testCtrl.editingIndex == $index && test.feedback.text == ''" ng-click="testCtrl.changeCurrentTest($index, test)">
+                            <span ng-show="testCtrl.editingIndex != $index" class="glyphicon glyphicon-pencil"></span>
+                            <span ng-show="testCtrl.editingIndex == $index" class="glyphicon glyphicon-ok"></span>
+                        </i>
+                    </div>
+                </div>
+                <div ng-show="test.url != null && test.file == null">
+                    <div class="col-md-1"><label>Task</label></div>
+                    <div class="col-md-10">
+                        <a href="{{test.url}}">{{test.url}}</a> Added {{test.added | localDate | date:'dd.MM.yyyy HH.mm'}}
+                        <button ng-if="(test.assignedUserProfile == null) && (test.isChecked == false)" ng-click="testCtrl.checkedTestId = test.id" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Add expert to test</button>
+                        <span ng-if="(test.assignedUserProfile != null) && (test.isChecked == false)">now checking {{test.assignedUserProfile.alias}}</span>
+                        <button ng-if="testCtrl.isCurrentUser(test.assignedUserProfile, test.isChecked)" class="btn btn-default" ng-click="testCtrl.changeCheckedTest(test.id)">Checked!</button>
+                    </div>
+                    <div class="col-md-1">
+                        <i class="btn" ng-disabled="testCtrl.editingIndex == $index && test.feedback.text == ''" ng-click="testCtrl.changeCurrentTest($index, test)">
+                            <span ng-show="testCtrl.editingIndex != $index" class="glyphicon glyphicon-pencil"></span>
+                            <span ng-show="testCtrl.editingIndex == $index" class="glyphicon glyphicon-ok"></span>
+                        </i>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-show="(test.comment != null && test.comment != '') || testCtrl.editingIndex == $index">
+                <div class="col-md-1"></div>
+                <div class="col-md-11">
+                    <h4 style="margin-bottom: 0;">Comment</h4>
+                    <textarea class="form-control feedbackField"
+                              msd-elastic
+                              ng-readonly="testCtrl.editingIndex != $index"
+                              ng-model="test.comment"></textarea>
+                </div>
+            </div>
+            <div class="row" ng-show="test.feedbackId != null || testCtrl.editingIndex == $index">
+                <div style="top: 33px; left: 10px;" class="col-md-1 disableBottomMargins">
+                </div>
+                <!--Feedback-->
+                <div class="col-md-11" ng-hide="test.feedback.text == '' && testCtrl.editingIndex != $index">
+                    <h4 class="feedback-title">Feedback</h4>
+                    <div style="width: auto; float: left;" ng-hide="test.feedback.id == undefind || test.feedback.id == 0">
+                        <thumb-button btn-type="btn-success" btn-icon="fa-thumbs-o-up" feedback="test.feedback"
+                                      key="Like"></thumb-button>
+                        <thumb-button btn-type="btn-danger" btn-icon="fa-thumbs-o-down" feedback="test.feedback"
+                                      key="Dislike"></thumb-button>
+                    </div>
+                    <div style="display: inline; float: right; margin-top: 10px;" ng-show="test.feedback.userAlias != undefined">
+                        <span>updated by {{test.feedback.userAlias}} {{test.feedback.date | date:'dd.MM.yyyy HH.mm'}}</span>
+                    </div>
+                    <textarea class="form-control feedbackField"
+                              msd-elastic
+                              ng-readonly="testCtrl.editingIndex != $index"
+                              ng-model="test.feedback.text"
+                              ng-style="test.feedback.feedbackConfig.style"></textarea>
+                    <span ng-show="testCtrl.editingIndex == $index && test.feedback.text == ''" class="help-block">Required</span>
+                </div>
+            </div>
+            <hr/>
+        </div>
+    </div>
+
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content margin-bottom">
+                <div class="row margin-bottom">
+                    <div class="col-md-5 col-md-offset-3">
+                        <input ng-model="testCtrl.filterSearch" type="text" class="form-control" placeholder="Search">
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-md-12">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Alias</th>
+                                <th>Login</th>
+                                <th>Position</th>
+                                <th>Check</th>
+                            </tr>
+                            <tr ng-repeat="user in testCtrl.techExperts | filter:testCtrl.filterSearch">
+                                <td>{{user.alias}}</td>
+                                <td>{{user.login}}</td>
+                                <td>{{user.position}}</td>
+                                <td>
+                                    <button data-dismiss="modal" ng-click="testCtrl.checkTechExpert(user.id)" class="btn btn-default">Check for test</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

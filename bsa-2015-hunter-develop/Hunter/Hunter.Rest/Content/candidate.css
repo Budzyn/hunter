@@ -1,0 +1,119 @@
+/*Long list*/
+.longlist-wrapper{
+    margin-top: 25px;
+}
+
+.list-pagination{
+    margin: 0;
+}
+
+.filter-settings{
+    border: 1px solid #ddd;
+}
+
+.filter-settings>ul{
+    list-style: none;
+    padding-left: 20px;
+}
+
+.filter-settings>ul ul{
+    list-style-type: none;
+}
+.filter-settings span {
+    color: rgb(185, 180, 180);
+    font-size: 12px;
+}
+/*Candidate page*/
+.candidate-info{
+/*	margin-left: 170px;*/
+}
+
+.personal-info{
+    font-size: 17px;
+    /*margin-bottom: 20px;*/
+    padding: 15px 15px;
+    clear:left;
+}
+
+.candidate-name{
+    font-size: 30px;
+    padding: 5px;
+}
+
+.filter-settings, .note-info-conteiner, .note-info-nav li{
+    border: 1px solid #ddd;	
+}
+
+.salary-wrapper, .candidate-name, .note-info-nav .active, .note-info-nav li:hover{
+    background:  #ddd;
+}
+
+.salary-wrapper{
+    font-size: 30px;
+    text-align: center;
+}
+.btn-veiw-resume{
+    margin-top: 30px;
+}
+
+.notes-table{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.notes-table td{
+    padding: 4px;
+    border-bottom: 10px solid #FFF;
+}
+
+.passed td{
+    background: rgba(0, 255, 0, 0.5);
+}
+
+.failed td{
+    background: rgba(255, 0, 0, 0.3);
+}
+
+
+.note-info-nav{
+    margin: 25px -15px;
+}
+
+.note-info-nav li{
+    padding: 8px;	
+}
+
+.card_overview{
+    float: left;
+    width: 100%;
+}
+.card_overview>* {
+    float: left;
+}
+.card_overview_note{
+    min-height: 250px;
+    border: 3px solid grey;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.card_overview>ul{
+    padding-left: 0;
+    padding-top: 20px;
+}
+.card_overview>ul>li{
+    width: 100%;
+}
+.card_overview>ul div {
+    border-radius: 0 3px 3px 0;
+    margin: 1px 0;
+    border-left: 0;
+    width: 100%;
+}
+
+a.list-group-item:hover {
+    cursor: pointer;
+}
+
+.treasure-overlay-spinner-content {
+    position: inherit;
+}

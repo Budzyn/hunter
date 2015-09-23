@@ -1,0 +1,152 @@
+﻿<div class="container site-content">
+    <h3>Add / Edit candidate : {{candidateAddEditCtrl.nameInTitle}}</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <h4>General</h4><hr />
+            <div>
+                <label>First Name</label>
+                <input type="text" class="form-control" ng-model="candidateAddEditCtrl.FirstName" />
+            </div>
+            <div>
+                <label>Last Name</label>
+                <input type="text" class="form-control" ng-model="candidateAddEditCtrl.LastName" />
+            </div>
+            <div>
+                <label>Birth Date</label>
+                <input type="date" class="form-control" ng-model="candidateAddEditCtrl.DateOfBirth" />
+            </div>
+            <div>
+                <label>Company</label>
+                <input type="text" class="form-control" ng-model="candidateAddEditCtrl.Company" />
+            </div>
+            <div>
+                <label>Location</label>
+                <input type="text" class="form-control" ng-model="candidateAddEditCtrl.Location" />
+            </div>
+            <div>
+                <label>Position</label>
+                <input type="text" class="form-control" ng-model="candidateAddEditCtrl.Position" />
+            </div>
+            <div>
+                <label>Years Of Experience</label>
+                <input type="text" class="form-control" ng-model="candidateAddEditCtrl.YearsOfExperience" />
+            </div>
+            <div>
+                <label>Salary</label>
+                <input type="text" class="form-control" ng-model="candidateAddEditCtrl.Salary" />
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <h4>Photo</h4><hr />
+            <div style="position: relative">
+
+                <!--            <shor-list-star is-short="candidateAddEditCtrl.ShortListed" candidate-id="candidateAddEditCtrl.id" size="'45px'"></shor-list-star>-->
+
+                <img class="edit-page-photo" ng-if="!candidateAddEditCtrl.photoLoaded" ngf-src="candidateAddEditCtrl.picture" />
+                <img class="edit-page-photo" ng-if="candidateAddEditCtrl.photoLoaded" src="{{candidateAddEditCtrl.photoUrl}}" />
+            </div><br />
+            <div class="input-group">
+                <input placeholder="Enter external url" type="text" class="form-control" ng-model="candidateAddEditCtrl.externalUrl" />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit" ng-click="candidateAddEditCtrl.getFromUrl()" title="Get photo from URL">
+                        <i class="fa fa-link"></i> Get
+                    </button>
+                </span>
+            </div>
+            <button class="btn btn-default form-control"
+                    ngf-select ngf-multiple="false" type="submit"
+                    ngf-change="candidateAddEditCtrl.previewSelected($file)"
+                    title="Upload photo from computer">
+                <i class="fa fa-folder-open"></i> Upload
+            </button>
+        </div>
+        <div class="col-md-4">
+            <h4>Resume</h4><hr />
+            <div class="group-btn">
+                <label>Upload resume</label>
+                <span class="btn btn-default btn-file">
+                    Choose files
+                    <input name="file" multiple type="file" ngf-select ngf-change="candidateAddEditCtrl.onFileSelect($files)">
+                </span>
+            </div>
+            <h4 ng-show="candidateAddEditCtrl.Resumes.length > 0">Uploaded resumes</h4>
+            <div ng-repeat="res in candidateAddEditCtrl.Resumes">
+                <ul>
+                    <li class="breakWords">File: {{res.fileName}}</li>
+                    <li>Uploaded: {{res.uploaded| localDate | date:'dd.MM.yyyy'}}</li>
+                </ul>
+                <a ng-href="{{res.downloadUrl}}" class="btn btn-default btn-block">Download</a>
+                <a ng-click="candidateAddEditCtrl.deleteResume(res)" class="btn btn-default btn-block">Delete File</a>
+                <hr />
+            </div>
+
+            <div>
+                <label>Resume summary</label>
+                <textarea style="height: 250px;" type="text" class="form-control" ng-model="candidateAddEditCtrl.ResumeSummary"></textarea>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Contacts</h4><hr />
+            <div>
+                <label>Phone</label>
+                <input type="text" class="form-control" ng-model="candidateAddEditCtrl.Phone" />
+            </div>
+            <div>
+                <label>Email</label>
+                <input type="text" class="form-control" ng-model="candidateAddEditCtrl.Email" />
+            </div>
+            <div>
+                <label>Skype</label>
+                <input type="text" class="form-control" ng-model="candidateAddEditCtrl.Skype" />
+            </div>
+            <div>
+                <label>LinkedIn</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="candidateAddEditCtrl.LinkedIn">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"
+                                ng-click="candidateAddEditCtrl.parseUrl(candidateAddEditCtrl.LinkedIn)">
+                            Get from <i class="fa fa-linkedin-square"></i>
+                        </button>
+                    </span>
+                </div>
+                <!--<input type="text" class="form-control" ng-model="candidateAddEditCtrl.LinkedIn" />
+                 <input ng-disabled="candidateAddEditCtrl.LinkedIn.length == 0"
+                type="button"
+                class="btn btn-default form-control"
+                ng-click="candidateAddEditCtrl.parseUrl(candidateAddEditCtrl.LinkedIn)"
+                value="Get from LinkedIn" />-->
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h4>Status</h4><hr />
+            <div>
+                <label>Shortlisted </label>
+                <input type="checkbox" ng-model="candidateAddEditCtrl.ShortListed" />
+            </div>
+            <div>
+                <label>Origin</label>
+                <select class="form-control" ng-model="candidateAddEditCtrl.selectedOrigin" ng-options="orgn.name for orgn in candidateAddEditCtrl.origins"></select>
+            </div>
+            <div>
+                <label>Resolution</label>
+                <select class="form-control" ng-model="candidateAddEditCtrl.selectedResolution" ng-options="res.name for res in candidateAddEditCtrl.resolutions"></select>
+            </div>
+            <h4>Pools</h4>
+            <pool-selector pool-lazy="true" pool-readonly="false" pool-short="false"
+                           candidate="{poolNames: candidateAddEditCtrl.selectedPools,
+                                        poolColors: candidateAddEditCtrl.candidatePoolColors}"></pool-selector>
+        </div>
+        <div class="col-md-4">
+            <h4>Note</h4><hr />
+            <textarea rows="10" class="form-control"></textarea>
+        </div>
+    </div>
+    <div class="button-done">
+        <button class="btn btn-primary pull-right" ng-click="candidateAddEditCtrl.addEditCandidate()">Save</button><br />
+    </div>
+</div>

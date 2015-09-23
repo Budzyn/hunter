@@ -1,0 +1,33 @@
+﻿<div class="container site-content">
+    <div class="col-md-4 col-md-offset-4">
+        <form name="registerForm" novalidate>
+            <div class="form-group">
+                <label>Login</label>
+                <input name="login" required type="email" class="form-control" ng-model="registerCtrl.newUser.email" />
+                <p ng-if="registerForm.login.$error.required">The login is required</p>
+                <p ng-if="registerForm.login.$error.email">The login should be in email format</p>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input name="pass" type="password" required ng-minlength="6" class="form-control" ng-model="registerCtrl.newUser.password" />
+                <p ng-if="registerForm.pass.$error.required">The password is required</p>
+                <p ng-if="registerForm.pass.$error.minlength">The minimum length should be 6</p>
+            </div>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input name="conPass" type="password" class="form-control" ng-model="registerCtrl.newUser.confirmPassword" />
+                <p class="help-block" ng-if="registerCtrl.newUser.password != registerCtrl.newUser.confirmPassword">The passwords are not equels</p>
+            </div>
+            <div class="form-group">
+                <label>State</label>
+                <select class="form-control" ng-model="registerCtrl.newUser.state" ng-options="state.id as state.name for state in registerCtrl.states"></select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Role</label>
+                <select class="form-control" ng-model="registerCtrl.newUser.roleId" ng-options="role.id as role.name for role in registerCtrl.roles"></select>
+            </div>
+
+            <input class="btn btn-primary pull-right" ng-disabled="registerForm.$invalid" ng-click="registerCtrl.register()" type="submit" value="Register" />
+        </form>
+    </div>
+</div>

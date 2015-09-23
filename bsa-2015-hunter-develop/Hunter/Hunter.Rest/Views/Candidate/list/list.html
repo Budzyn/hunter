@@ -1,0 +1,115 @@
+<div class="container site-content">
+    <div class="row">
+        <div class="col-md-10">
+            <h3>{{candidateListCtrl.pageConfig.pageTitle}}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="filte-form-wrapper col-md-3">
+
+            <div class="form-group">
+                <label>Search</label>
+                <input type="search" class="form-control" ng-model="candidateListCtrl.filter.search" ng-change="candidateListCtrl.updateCandidate()">
+            </div>
+
+            <div class="filter-settings">
+                <ul>
+                    <li>
+                        <input ng-click="candidateListCtrl.updateCandidate()" type="checkbox" ng-model="candidateListCtrl.filter.shortListed"> <label>Shortlisted</label>
+                    </li>
+                    <li>
+                        <label>Pool</label>
+                        <ul>
+                            <li ng-repeat="pool in candidateListCtrl.pools">
+                                <input ng-click="candidateListCtrl.updateCandidate()" type="checkbox" checklist-model="candidateListCtrl.filter.pools" checklist-value="pool.name"> {{pool.name}}
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <label>Resolution</label>
+                        <ul>
+                            <li ng-repeat="status in candidateListCtrl.statuses">
+                                <input ng-click="candidateListCtrl.updateCandidate()" type="checkbox" checklist-model="candidateListCtrl.filter.statuses" checklist-value="status.id"> {{status.name}}
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <label>Added by</label>
+                        <ul>
+                            <li ng-repeat="inv in candidateListCtrl.inviters">
+                                <input ng-click="candidateListCtrl.updateCandidate()" type="checkbox" checklist-model="candidateListCtrl.filter.inviters" checklist-value="inv.userLogin"> {{inv.alias}}({{inv.countOfAddedCandidates}})
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-9" spinner="candidateListCtrl.tableSpinner">
+            <div class="form-group col-md-5">
+                <label>Order By</label>
+                <select class="form-control"
+                        ng-options="item.options as item.text for item in candidateListCtrl.sortOptions"
+                        ng-model="candidateListCtrl.filter.order"
+                        ng-change="candidateListCtrl.updateCandidate()"></select>
+            </div>
+
+            <table class="table table-striped table-hover table-responsive">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Added</th>
+                        <th>Resolution</th>
+                        <th>Exp</th>
+                        <th>Company</th>
+                        <th>City</th>
+                        <th>Salary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in candidateListCtrl.candidateList" ng-click="candidateListCtrl.ShowDetails(item)" ng-class="candidateListCtrl.ActiveTr(item.id)">
+                        <td><input type="checkbox" checklist-model="candidateListCtrl.selectedCandidates" checklist-value="item.id" ng-click="$event.stopPropagation();"></td>
+                        <td><a href="#/candidate/{{item.id}}">{{item.firstName + " " + item.lastName}}</a></td>
+                        <td>{{item.addDate | localDate | date:'dd.MM.yyyy'}}</td>
+                        <td>{{candidateListCtrl.statuses[item.resolution].name}}</td>
+                        <td>{{item.yearsOfExperience}}</td>
+                        <td>{{item.company}}</td>
+                        <td>{{item.location}}</td>
+                        <td>{{item.salary}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div ng-show="candidateListCtrl.pageConfig.isAddToVacancyButton" class="row form-inline">
+                <select class="col-md-8 form-control" ng-model="candidateListCtrl.vacancyId">
+                    <option ng-repeat="option in candidateListCtrl.vacancyByState" value="{{option.id}}">{{option.name}}</option>
+                </select>
+                <button class="btn btn-default col-md-offset-1 col-md-3" type="button" ng-click="candidateListCtrl.addCandidateToLongList()">Add to Long List</button>
+            </div>
+            <div ng-hide="candidateListCtrl.pageConfig.isAddToVacancyButton" class="row form-inline">
+                <button class="btn btn-default col-md-offset-1 col-md-10" type="button" ng-click="candidateListCtrl.addCandidateToLongList()">Add to '{{candidateListCtrl.vacancy.name}}' Long List</button>
+            </div>
+            <div>
+                <div class="pagination page-count-wrapper form-inline">
+                    <span>Items on page</span>
+                    <select class="form-control"
+                            ng-model="candidateListCtrl.filter.pageSize"
+                            ng-change="candidateListCtrl.updateCandidate()">
+                        <option ng-repeat="i in [5,10,25,50,100]">{{i}}</option>
+                    </select>
+                </div>
+                <pagination total-items="candidateListCtrl.totalItems"
+                            ng-model="candidateListCtrl.filter.currentPage"
+                            items-per-page="candidateListCtrl.filter.pageSize"
+                            max-size="5"
+                            ng-click="candidateListCtrl.updateCandidate()"
+                            class="pagination-sm"
+                            boundary-links="true"
+                            template-url="../../Views/templates/pagination.html"></pagination>
+
+            </div>
+        </div>
+        <div class="col-md-4 partial-candidate-details" ng-show="$root.candidateDetails.show" ng-include="'/Views/candidate/profilePartial/profilePartial.html'"></div>
+    </div>
+</div>
+

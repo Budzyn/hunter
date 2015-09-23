@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hunter.DataAccess.Db", "Hunter.DataAccess.Db\Hunter.DataAccess.Db.csproj", "{6293AEEB-7108-49A2-8300-4EA40D4222D0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{778686CA-F03E-49A6-BBEA-47A84D2A9514} = {778686CA-F03E-49A6-BBEA-47A84D2A9514}
+		{870A30FE-6780-4B1C-81F5-1EAF8BD8F50C} = {870A30FE-6780-4B1C-81F5-1EAF8BD8F50C}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hunter.DataAccess.Interface", "Hunter.DataAccess.Interface\Hunter.DataAccess.Interface.csproj", "{870A30FE-6780-4B1C-81F5-1EAF8BD8F50C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{778686CA-F03E-49A6-BBEA-47A84D2A9514} = {778686CA-F03E-49A6-BBEA-47A84D2A9514}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hunter.Rest", "Hunter.Rest\Hunter.Rest.csproj", "{5AF4F732-0936-4774-A280-54DBCD93CA2F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E541870A-0B8F-4699-AB3C-D34DFE630586} = {E541870A-0B8F-4699-AB3C-D34DFE630586}
+		{778686CA-F03E-49A6-BBEA-47A84D2A9514} = {778686CA-F03E-49A6-BBEA-47A84D2A9514}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hunter.Services", "Hunter.Services\Hunter.Services.csproj", "{7CB1E630-4503-4083-BA17-A17FA6FB74AB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E541870A-0B8F-4699-AB3C-D34DFE630586} = {E541870A-0B8F-4699-AB3C-D34DFE630586}
+		{778686CA-F03E-49A6-BBEA-47A84D2A9514} = {778686CA-F03E-49A6-BBEA-47A84D2A9514}
+		{6293AEEB-7108-49A2-8300-4EA40D4222D0} = {6293AEEB-7108-49A2-8300-4EA40D4222D0}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hunter.Common", "Hunter.Common\Hunter.Common.csproj", "{E541870A-0B8F-4699-AB3C-D34DFE630586}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hunter.Tests", "Hunter.Tests\Hunter.Tests.csproj", "{2EFB30C3-BEC1-4B3C-8F2C-AD3EA56AF9D4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{778686CA-F03E-49A6-BBEA-47A84D2A9514} = {778686CA-F03E-49A6-BBEA-47A84D2A9514}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hunter.DataAccess.Entities", "Hunter.DataAccess.Entities\Hunter.DataAccess.Entities.csproj", "{778686CA-F03E-49A6-BBEA-47A84D2A9514}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hunter.Tools.LinkedIn", "Hunter.Tools.LinkedIn\Hunter.Tools.LinkedIn.csproj", "{3690D09C-B5B4-4A5A-A424-C1B33A7AD338}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6293AEEB-7108-49A2-8300-4EA40D4222D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6293AEEB-7108-49A2-8300-4EA40D4222D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6293AEEB-7108-49A2-8300-4EA40D4222D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6293AEEB-7108-49A2-8300-4EA40D4222D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{870A30FE-6780-4B1C-81F5-1EAF8BD8F50C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{870A30FE-6780-4B1C-81F5-1EAF8BD8F50C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{870A30FE-6780-4B1C-81F5-1EAF8BD8F50C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{870A30FE-6780-4B1C-81F5-1EAF8BD8F50C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AF4F732-0936-4774-A280-54DBCD93CA2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AF4F732-0936-4774-A280-54DBCD93CA2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AF4F732-0936-4774-A280-54DBCD93CA2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AF4F732-0936-4774-A280-54DBCD93CA2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CB1E630-4503-4083-BA17-A17FA6FB74AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CB1E630-4503-4083-BA17-A17FA6FB74AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CB1E630-4503-4083-BA17-A17FA6FB74AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CB1E630-4503-4083-BA17-A17FA6FB74AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E541870A-0B8F-4699-AB3C-D34DFE630586}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E541870A-0B8F-4699-AB3C-D34DFE630586}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E541870A-0B8F-4699-AB3C-D34DFE630586}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E541870A-0B8F-4699-AB3C-D34DFE630586}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EFB30C3-BEC1-4B3C-8F2C-AD3EA56AF9D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EFB30C3-BEC1-4B3C-8F2C-AD3EA56AF9D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EFB30C3-BEC1-4B3C-8F2C-AD3EA56AF9D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EFB30C3-BEC1-4B3C-8F2C-AD3EA56AF9D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{778686CA-F03E-49A6-BBEA-47A84D2A9514}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{778686CA-F03E-49A6-BBEA-47A84D2A9514}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{778686CA-F03E-49A6-BBEA-47A84D2A9514}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{778686CA-F03E-49A6-BBEA-47A84D2A9514}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3690D09C-B5B4-4A5A-A424-C1B33A7AD338}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3690D09C-B5B4-4A5A-A424-C1B33A7AD338}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3690D09C-B5B4-4A5A-A424-C1B33A7AD338}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3690D09C-B5B4-4A5A-A424-C1B33A7AD338}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

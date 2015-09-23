@@ -1,0 +1,74 @@
+﻿<div ng-controller="CardHrInterviewController as hrInterviewCtrl">
+    <div class="hrInterview_wrap">
+        <div class="row">
+            <ul class="nav nav-pills">
+                <li ng-if="generalCardCtrl.isLLM" class="active">
+                    <a data-toggle="pill" ng-click="hrInterviewCtrl.getFeedbacks()">
+                        {{hrInterviewCtrl.vacancy.name}}
+                    </a>
+                </li>
+                <li><a data-toggle="pill" ng-click="hrInterviewCtrl.getAllFeedbacks()">All Feedbacks</a></li>
+                <li><a data-toggle="pill" ng-click="hrInterviewCtrl.getMyFeedbacks()">My Feedbacks</a></li>
+                <li><a ng-if="generalCardCtrl.isLLM" ng-click="hrInterviewCtrl.showAddBlock = !hrInterviewCtrl.showAddBlock" title="Add new Feedback"><span class="fa fa-2x fa-plus-circle"></span></a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div ng-show="hrInterviewCtrl.showAddBlock" class="row">
+            <br />
+            <div ng-form="form">
+                <div class="form-group" ng-class="{'has-warning': !form.NoteText.$valid}">
+                    <textarea name="text" class="form-control"
+                              ng-model="hrInterviewCtrl.newFeedbackText"
+                              msd-elastic required placeholder="Enter new feedback"></textarea>
+                    <span ng-show="form.text.$error.required" class="help-block">Required</span>
+                </div>
+                <button class="btn btn-success" type="submit"
+                        ng-click="hrInterviewCtrl.saveFeedback(hrInterviewCtrl.newFeedbackText, true)"
+                        data-ng-disabled="!form.$valid">
+                    Add
+                </button>
+                <div class="col-sm-4">
+                    <select ng-model="hrInterviewCtrl.newFeedbackType"
+                            ng-init="hrInterviewCtrl.newFeedbackType = 0"
+                            ng-options="type.id as type.name for type in hrInterviewCtrl.HrFeedbackTypes"
+                            class="form-control"></select>
+                </div>
+            </div>
+        </div>
+        <div class="hrInterview_comments">
+            <div class="hrInterview_form" ng-repeat="feedback in hrInterviewCtrl.feedbacks | orderBy: '-date'">
+                <form name="feedbackForm">
+                    <div>
+                        <div>
+                            <div style="width: auto;">
+                                <h3>{{generalCardCtrl.feedbackTypes[feedback.type].name}} {{hrInterviewCtrl.vacancy.name != feedback.vacancy && feedback.vacancy != null ? 'from ' + feedback.vacancy :''}}</h3>
+                            </div>
+                            <div class="vote-group" ng-hide="feedback.id == 0">
+                                <thumb-button btn-type="btn-success" btn-icon="fa-thumbs-o-up"
+                                              feedback="feedback"
+                                              key="Like"></thumb-button>
+                                <thumb-button btn-type="btn-danger" btn-icon="fa-thumbs-o-down"
+                                              feedback="feedback"
+                                              key="Dislike"></thumb-button>
+                            </div>
+                            <span ng-hide="feedback.date == '' || feedback.id==0">Updated by {{feedback.userAlias}} {{feedback.date | date:'dd.MM.yyyy HH.mm'}}</span>
+                        </div>
+                        <textarea class="form-control" ng-readonly="!feedback.editMode" name="text"
+                                  ng-model="feedback.text" msd-elastic
+                                  ng-style="{'border-color':hrInterviewCtrl.voteColors[feedback.successStatus] }">
+                            {{feedback.text}}
+                        </textarea>
+                    </div>
+                    <div>
+                        <button ng-click="hrInterviewCtrl.updateFeedback(feedback)"
+                                class="btn" type="button">
+                            {{feedback.editMode == true ?'Save':'Edit' }}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

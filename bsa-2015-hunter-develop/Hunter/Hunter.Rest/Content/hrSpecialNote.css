@@ -1,0 +1,19 @@
+﻿.hrSpecialNote_form {
+    margin-top: 12px;
+}
+
+.hrSpecialNote_form textarea{
+    overflow: hidden;
+    border-radius: 5px;
+    border: 2px solid gray;
+}
+
+.hrSpecialNote_form_add {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+.hrSpecialNote_form_add textarea{
+    overflow: hidden;
+    border-radius: 5px;
+    border: 2px solid gray;
+}

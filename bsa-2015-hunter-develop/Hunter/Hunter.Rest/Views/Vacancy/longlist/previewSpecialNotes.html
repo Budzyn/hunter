@@ -1,0 +1,9 @@
+﻿<div class="container-partial">
+    <div class="ll_preview_overview" ng-repeat="note in llPreviewCtrl.notes" ng-hide="overview.text == ''">
+        <div class="title">
+            <h5></h5>
+            <p>({{note.userAlias}}, {{note.lastEdited | date:'dd.MM.yyyy HH.mm'}})</p>
+        </div>
+        <div class="text">{{note.text}}</div>
+    </div>
+</div>

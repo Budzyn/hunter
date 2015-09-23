@@ -1,0 +1,96 @@
+﻿<!--should includ MyStyle.css -->
+<div class="container site-content">
+    <h3>Vacancies</h3>
+    <div class="row">
+        <div class="col-md-3">
+            <label>Search</label>
+            <input type="text" class="form-control" id="searchFilter" placeholder="Search" ng-model="vacancyListCtrl.filterParams.filter"><br />
+            <label>Pool</label>
+            <div class="filter-settings">
+                <ul>
+                    <li ng-repeat="pool in vacancyListCtrl.pools">
+                        <input type="checkbox" checklist-model="vacancyListCtrl.filterParams.pool" checklist-value="pool.id"> {{pool.name}}
+                    </li>
+                </ul>
+            </div><br />
+            <label>State</label>
+            <div class="filter-settings">
+                <ul>
+                    <li ng-repeat="status in vacancyListCtrl.statuses">
+                        <input type="checkbox" checklist-model="vacancyListCtrl.filterParams.status" checklist-value="status.id"> {{status.name}}
+                    </li>
+                </ul>
+            </div><br />
+            <label>Added by</label>
+            <div class="filter-settings">
+                <ul>
+                    <li ng-repeat="adder in vacancyListCtrl.adders">
+                        <input type="checkbox" checklist-model="vacancyListCtrl.filterParams.addedBy" checklist-value="adder.id"> {{adder.alias}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-4">
+                    <select class="form-control" ng-model="vacancyListCtrl.sortAction" ng-options="s.name for s in vacancyListCtrl.sortBy"></select>
+                </div>
+                <div class="col-md-2">
+                    <a href="#/vacancy/edit" class="btn"><span class="glyphicon glyphicon-plus-sign"></span>Add new</a>
+                </div>
+            </div>
+            <div class="row">
+                <table class="table table-striped table-hover table-responsive">
+                    <thead>
+                        <tr class="tr-vert-center">
+                            <th></th>
+                            <th>Title</th>
+                            <th></th>
+                            <th>Pool</th>
+                            <th>Start date</th>
+                            <th>Added By</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr dir-paginate="vacancy in vacancyListCtrl.vacancies | itemsPerPage: vacancyListCtrl.filterParams.pageSize"
+                            total-items="vacancyListCtrl.totalCount" current-page="vacancyListCtrl.filterParams.page">
+                            <td>
+                                <input type="checkbox" />
+                            </td>
+                            <td>
+                                <a href="#/vacancy/{{vacancy.id}}/longlist">{{vacancy.name}}</a>
+                            </td>
+                            <td class="rowlink-skip">
+                                <a href="#/vacancy/edit/{{vacancy.id}}" title="Edit Vacancy"><i class="fa fa-pencil"></i></a>
+                            </td>
+                            <td>
+                                <pool-selector pool-lazy="true" pool-readonly="true" pool-short="false"
+                                               candidate="vacancy"></pool-selector>
+                            </td>
+                            <td>{{vacancy.startDate == null ? 'no date' : vacancy.startDate | date:'dd.MM.yyyy'}}</td>
+                            <td><a href="#/user/edit/{{vacancy.addedById}}">{{vacancy.addedByName}}</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <div class="pagination page-count-wrapper form-inline">
+                        <span>Items on page</span>
+                        <select class="form-control"
+                                ng-model="vacancyListCtrl.filterParams.pageSize"
+                                ng-change="vacancyListCtrl.loadDataByParams()">
+                            <option ng-repeat="i in [5, 10, 25, 50, 100]">{{i}}</option>
+                        </select>
+                    </div>
+                    <pagination total-items="vacancyListCtrl.totalCount"
+                                ng-model="vacancyListCtrl.filterParams.page"
+                                items-per-page="vacancyListCtrl.filterParams.pageSize"
+                                max-size="5"
+                                ng-click="vacancyListCtrl.loadDataByParams()"
+                                class="pagination-sm"
+                                boundary-links="true"
+                                template-url="../../Views/templates/pagination.html"></pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

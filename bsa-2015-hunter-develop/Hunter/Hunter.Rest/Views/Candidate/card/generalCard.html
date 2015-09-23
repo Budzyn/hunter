@@ -1,0 +1,98 @@
+﻿<div class="card-wrapper container site-content">
+    <div id="card-static">
+        <div class="candidate-info">
+            <div class="candidate-personal-info row">
+                <div class="col-md-2">
+                    <shor-list-star is-short="generalCardCtrl.candidate.shortListed" candidate-id="generalCardCtrl.candidate.id" size="'30px'"></shor-list-star>
+                    <img class="profile-photo img-circle" ng-src="{{generalCardCtrl.candidate.photoUrl}}" />
+                    <pool-selector pool-readonly="false" pool-short="false" candidate="generalCardCtrl.candidate"></pool-selector>
+                </div>
+                <div class="col-md-6">
+                    <div class="personal-info">
+                        <div>
+                            <span ng-if="!generalCardCtrl.isLLM" class="candidate-name">{{generalCardCtrl.candidate.firstName+" "+generalCardCtrl.candidate.lastName}} from General Pool</span>
+                            <span ng-if="generalCardCtrl.isLLM" class="candidate-name">{{generalCardCtrl.candidate.firstName+" "+generalCardCtrl.candidate.lastName}} from {{generalCardCtrl.vacancy.name}}</span>
+                        </div>
+                        <div>Current/Past: {{generalCardCtrl.candidate.currentPosition}}</div>
+                        <div>Company/Location: {{generalCardCtrl.candidate.company+", "+generalCardCtrl.candidate.location}}</div>
+                        <div>Email: {{generalCardCtrl.candidate.email}}</div>
+                        <div>Skype: {{generalCardCtrl.candidate.skype}}</div>
+                        <div>Phone: {{generalCardCtrl.candidate.phone}}</div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Origin</label>
+                        <input type="text" class="candidate-origin form-control" disabled="disabled" placeholder="Sourced">
+                    </div>
+                    <div class="candidate-resolution form-group">
+                        <label>Resolution</label>
+                        <select class="form-control" name="resolution"
+                                ng-change="generalCardCtrl.updateResolution()"
+                                ng-model="generalCardCtrl.candidate.resolution"
+                                ng-options="resolution.id as resolution.name for resolution in generalCardCtrl.resolutions"></select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="salary-wrapper">{{generalCardCtrl.candidate.salary}}</div>
+                    <input class="btn-veiw-resume btn btn-default btn-block" type="button" value="Veiw Resume" ng-click="generalCardCtrl.showResume()" ng-disabled="generalCardCtrl.candidate.lastResumeUrl==''">
+                    <a class="btn btn-default btn-block" href="#/candidate/edit/{{generalCardCtrl.candidate.id}}">Edit Profile</a>
+                    <a ng-if="generalCardCtrl.isLLM" class="btn btn-default btn-block" href="#/candidate/{{generalCardCtrl.candidate.id}}">Full Profile</a>
+                    <button ng-if="generalCardCtrl.isLLM"
+                            class="btn btn-default btn-block"
+                            type="button"
+                            ng-click="generalCardCtrl.removeCard(generalCardCtrl.candidate.id)">
+                        Remove from List
+                    </button>
+                    <a class="btn btn-default btn-block" ng-show="generalCardCtrl.candidate.linkedin != ''" href="{{generalCardCtrl.candidate.linkedin}}" target="_blank">View LinkenIn Profile</a>
+                    <a class="btn btn-default btn-block" href="#" data-toggle="modal" data-target="#addEditNotificationModal">Add Notification</a>
+                    <div ng-controller="NotificationListController as notificationListCtrl"
+                         ng-include="'/Views/notification/addEdit/addEditModal.html'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-if="generalCardCtrl.isLLM" class="row col-md-12">
+        <div class="btn-group btn-group-justified">
+            <label class="btn btn-default" ng-model="generalCardCtrl.currentStage" btn-radio="{{generalCardCtrl.stages[0]}}">{{generalCardCtrl.stages[0].name}}</label>
+            <label class="btn btn-default" ng-model="generalCardCtrl.currentStage" btn-radio="{{generalCardCtrl.stages[1]}}">{{generalCardCtrl.stages[1].name}}</label>
+            <label class="btn btn-default" ng-model="generalCardCtrl.currentStage" btn-radio="{{generalCardCtrl.stages[2]}}">{{generalCardCtrl.stages[2].name}}</label>
+            <label class="btn btn-default" ng-model="generalCardCtrl.currentStage" btn-radio="{{generalCardCtrl.stages[3]}}">{{generalCardCtrl.stages[3].name}}</label>
+            <div class="btn-group" ng-show="generalCardCtrl.currentStage.id != generalCardCtrl.stages[4].id && generalCardCtrl.currentStage.id != generalCardCtrl.stages[5].id">
+                <label class="btn btn-default" data-toggle="dropdown">Failed <span class="caret"></span></label>
+                <div class="dropdown-menu">
+                    <label class="btn btn-default" ng-model="generalCardCtrl.currentStage" btn-radio="{{generalCardCtrl.stages[4]}}">{{generalCardCtrl.stages[4].name}}</label>
+                    <label class="btn btn-default" ng-model="generalCardCtrl.currentStage" btn-radio="{{generalCardCtrl.stages[5]}}">{{generalCardCtrl.stages[5].name}}</label>
+                </div>
+            </div>
+            <div class="btn-group" ng-show="generalCardCtrl.currentStage.id == generalCardCtrl.stages[4].id">
+                <label class="btn btn-default" data-toggle="dropdown" ng-model="generalCardCtrl.currentStage" btn-radio="{{generalCardCtrl.stages[4]}}">{{generalCardCtrl.stages[4].name}} <span class="caret"></span></label>
+                <div class="dropdown-menu">
+                    <label class="btn btn-default" ng-model="generalCardCtrl.currentStage" btn-radio="{{generalCardCtrl.stages[5]}}">{{generalCardCtrl.stages[5].name}}</label>
+                </div>
+            </div>
+            <div class="btn-group" ng-show="generalCardCtrl.currentStage.id == generalCardCtrl.stages[5].id">
+                <label class="btn btn-default" data-toggle="dropdown" ng-model="generalCardCtrl.currentStage" btn-radio="{{generalCardCtrl.stages[5]}}">{{generalCardCtrl.stages[5].name}} <span class="caret"></span></label>
+                <div class="dropdown-menu">
+                    <label class="btn btn-default" ng-model="generalCardCtrl.currentStage" btn-radio="{{generalCardCtrl.stages[4]}}">{{generalCardCtrl.stages[4].name}}</label>
+                </div>
+            </div>
+            <label class="btn btn-default" ng-model="generalCardCtrl.currentStage" btn-radio="{{generalCardCtrl.stages[6]}}">{{generalCardCtrl.stages[6].name}}</label>
+        </div><br />
+    </div>
+    <div class="row col-md-12">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation"
+                ng-class="{active: generalCardCtrl.currentTabName == tab.name}"
+                ng-repeat="tab in generalCardCtrl.tabs track by $index"
+                ng-click="generalCardCtrl.changeTemplate(tab)">
+                <a role="presentation" data-toggle="tab">{{ tab.name }}</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active">
+                <div class="panel-body" id="card-dynamic" ng-include="generalCardCtrl.templateToShow"></div>
+            </div>
+        </div>
+    </div>
+</div>

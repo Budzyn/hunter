@@ -1,0 +1,69 @@
+﻿﻿<div class="container-partial" ng-controller='CandidatePartialController as candidatePartCtrl' >  
+    <div ng-if="!candidatePartCtrl.isEmpty" spinner='candidatePartCtrl.prevLoad' class="row ll_preview">
+        <div class="col-md-12">
+            <p class="ll_close_button" ng-click="$root.candidateDetails.show = false"><span class=" glyphicon glyphicon-remove"></span></p>
+            <h2>Preview</h2>
+            <div class="ll_preview_info">
+                <div class="ll_preview_info_img">
+                    <shor-list-star is-short="candidatePartCtrl.candidate.shortlisted" candidate-id="candidatePartCtrl.candidate.id" size="'30px'"></shor-list-star>
+                    <img ng-src="{{candidatePartCtrl.candidate.photoUrl}}" alt="{{candidatePartCtrl.candidate.firstName}} {{candidatePartCtrl.candidate.lastName}} foto" title="{{candidatePartCtrl.candidate.firstName}} {{candidatePartCtrl.candidate.lastName}} foto" />
+                </div>
+                <div class="ll_preview_info_all">
+                    <div>
+                        <a href="#/candidate/{{candidatePartCtrl.candidate.id}}">{{candidatePartCtrl.candidate.firstName + " " + candidatePartCtrl.candidate.lastName}}</a>
+                    </div>
+                    <div>{{candidatePartCtrl.candidate.salary}}</div>
+                    <div class="group-btn">
+                        <a class="btn btn-default" href="#/candidate/{{candidatePartCtrl.candidate.id}}" title="Full Profile"><i class="fa fa-newspaper-o"></i></a>
+                        <a class="btn btn-default" href="#/candidate/edit/{{candidatePartCtrl.candidate.id}}" title="Edit Profile"><i class="fa fa-pencil"></i></a>
+                        <a class="btn btn-default" ng-show="candidatePartCtrl.candidate.lastResumeUrl != ''" ng-click="candidatePartCtrl.showResume()" title="View Resume"><i class="fa fa-file-text-o"></i></a>
+                        <!--<input class="btn btn-default" type="button" value='<i class="fa fa-file-text-o"></i>' title="View Resume" ng-click="candidatePartCtrl.showResume()" ng-disabled="candidatePartCtrl.candidate.lastResumeUrl==''">-->
+                        <a class="btn btn-default" ng-show="candidatePartCtrl.candidate.linkedin != ''" href="{{candidatePartCtrl.candidate.linkedin}}" target="_blank" title="View LinkedIn Profile"><i class="fa fa-linkedin-square"></i></a>
+                    </div>
+                </div>
+                 <div class="personal-info">
+                            <div>Current/Past: {{candidatePartCtrl.candidate.currentPosition}}</div>
+                            <div>Years of experience: {{candidatePartCtrl.candidate.yearsOfExperience}}</div>
+                            <div>Company/Location: {{candidatePartCtrl.candidate.company+", "+candidatePartCtrl.candidate.location}}</div>
+                            <div>Email: {{candidatePartCtrl.candidate.email}}</div>
+                            <div>Skype: {{candidatePartCtrl.candidate.skype}}</div>
+                            <div>Phone: {{candidatePartCtrl.candidate.phone}}</div>
+                 </div>
+                <div class="candidate-resolution form-inline">
+                    <label>Resolution</label>
+                    <select class="form-control" name="resolution" ng-change="candidatePartCtrl.updateResolution()" ng-model="candidatePartCtrl.candidate.resolution" ng-options="resolution.id as resolution.name for resolution in candidatePartCtrl.resolutions"></select>
+                </div>
+                  <!--<div class="candidate-resolution form-group">
+                        <label>Resolution</label>
+                        <select class="form-control" name="resolution" ng-change="candidatePartCtrl.updateResolution()" ng-model="candidatePartCtrl.candidate.resolution" ng-options="resolution.id as resolution.name for resolution in candidatePartCtrl.resolutions"></select>
+                  </div>-->
+                <!--<div class="ll_preview_info_control">
+                    <a class="btn btn-default" href="#/candidate/{{candidatePartCtrl.candidate.id}}">Full Profile</a>
+                    <a class="btn btn-default" href="#/candidate/edit/{{candidatePartCtrl.candidate.id}}">Edit Profile</a>
+                </div>-->
+
+                <div class="col-md-12">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation"
+                            ng-class="{active: candidatePartCtrl.currentTabName == tab.name}"
+                            ng-repeat="tab in candidatePartCtrl.tabs track by $index"
+                            ng-click="candidatePartCtrl.changeTemplate(tab)">
+                            <a role="presentation" data-toggle="tab">{{ tab.name }}</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade in active ll_preview_overview_wrap">
+                            <p ng-hide="candidatePartCtrl.currentTabEmpty">No {{candidatePartCtrl.currentTabName}}
+                            </p>
+                                <div id="card-dynamic" ng-include="candidatePartCtrl.templateToShow"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="ll_preview_info_control">
+                    <input class="btn btn-default" type="button" value="View Resume" ng-click="candidatePartCtrl.showResume()" ng-disabled="candidatePartCtrl.candidate.lastResumeUrl==''">
+                    <a class="btn btn-default" ng-show="candidatePartCtrl.candidate.linkedin != ''" href="{{candidatePartCtrl.candidate.linkedin}}" target="_blank">View LinkenIn Profile</a>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>

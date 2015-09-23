@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            <h3>Candidate Details (Profile)</h3>
+        </div>
+    </div>
+    <div class="candidate-info">
+        <div class="candidate-personal-info row">
+            <div class="image col-md-2">
+                <shor-list-star is-short="candidateCtrl.candidate.shortListed" candidate-id="candidateCtrl.candidate.id" size="'32px'"></shor-list-star>
+                <img class="profile-photo img-circle" ng-src="{{candidateCtrl.candidate.photoUrl}}"/>
+            </div>
+            <div class="col-md-7">
+                <div class="personal-info">
+                    <div style="float: left;">
+                        <span class="candidate-name">{{candidateCtrl.candidate.firstName+" "+candidateCtrl.candidate.lastName}}</span>
+                    </div>
+                    <pool-selector candidate="candidateCtrl.candidate"></pool-selector>
+
+                    <!--!!!!style!!!!-->
+                    <div style="margin-top: 10px;">current/past: {{candidateCtrl.candidate.currentPosition}}</div>
+                    <!--!!!!-->
+                    <div>years of experience: {{candidateCtrl.candidate.yearsOfExperience}}</div>
+                    <div>company/location: {{candidateCtrl.candidate.company+", "+candidateCtrl.candidate.location}}</div>
+                    <div>email: {{candidateCtrl.candidate.email}}</div>
+                    <div>skype: {{candidateCtrl.candidate.skype}}</div>
+                    <div>phone: {{candidateCtrl.candidate.phone}}</div>
+                </div>
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label>Origin</label>
+                        <input type="text" class="candidate-origin form-control" disabled="disabled" placeholder="Sourced">
+                    </div>
+                    <div class="candidate-resolution form-group">
+                        <label>Resolution</label>
+                        <select class="form-control" name="resolution" ng-change="candidateCtrl.updateResolution()" ng-model="candidateCtrl.candidate.resolution" ng-options="resolution.id as resolution.name for resolution in candidateCtrl.resolutions"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div spinner="candidateCtrl.isScinner" class="col-md-3">
+                <div class="salary-wrapper">{{candidateCtrl.candidate.salary}}</div>
+                <input class="btn-veiw-resume btn btn-default btn-block" type="button" value="Veiw Resume" ng-click="candidateCtrl.showResume()" ng-disabled="candidateCtrl.candidate.lastResumeUrl==''">
+                <a class="btn btn-default btn-block" href="#/candidate/edit/{{candidateCtrl.candidate.id}}">Edit Profile</a>
+            </div>
+        </div>
+        <div class="note-info-container" ng-include='candidateCtrl.templateToShow'></div>
+        <div class="note-info-nav col-md-4">
+            <ul class="nav">
+                <li ng-repeat="subItem in candidateCtrl.subMenuItems" ng-class="{active: subItem.isActive}" ng-click="candidateCtrl.changeTemplate(subItem.name)">{{subItem.name}}</li>
+                <!--<li class="active" ng>Aplications</li>
+                <li>Spetial Notes</li>
+                <li>Tests</li>
+                <li>Interviews</li>-->
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+﻿<div ng-controller="CardOverviewController as overviewCtrl" ng-cloak>
+    <div ng-repeat="feedback in overviewCtrl.feedbacks">
+        <div class="row">
+            <div class="col-md-7">
+                <h4>{{generalCardCtrl.feedbackTypes[feedback.type].name}} {{ !generalCardCtrl.isLLM ? 'from ' + feedback.vacancy :''}}</h4>
+            </div>
+            <div class="col-md-5" style="text-align: right; margin-top: 25px">
+                <span ng-hide="feedback.date == ''">Updated by {{feedback.userAlias}} {{feedback.date | date:'dd.MM.yyyy HH:mm'}}</span>
+            </div>
+        </div>
+        <div ng-hide="feedback.text == ''">
+            <textarea class="form-control feedbackField"
+                      ng-style="{'border-color':overviewCtrl.voteColors[feedback.successStatus]}"
+                      disabled name="text"
+                      ng-model="feedback.text"
+                      msd-elastic></textarea>
+        </div>
+    </div>
+    <hr>
+    <a ng-hide="overviewCtrl.showHistoryBlock" ng-click="overviewCtrl.GetFeedbacksHistory()" title="Show History Feedbacks">View Older</a>
+    <div ng-show="overviewCtrl.showHistoryBlock" ng-repeat="feedback in overviewCtrl.feedbacksHistory | orderBy: ['type','-date']">
+        <div class="row">
+            <div class="col-md-7">
+                <h4>{{generalCardCtrl.feedbackTypes[feedback.type].name}} {{ !generalCardCtrl.isLLM ? 'from ' + feedback.vacancy :''}}</h4>
+            </div>
+            <div class="col-md-5" style="text-align: right; margin-top: 25px">
+                <span ng-hide="feedback.date == ''">Updated by {{feedback.userAlias}} {{feedback.date | date:'dd.MM.yyyy HH:mm'}}</span>
+            </div>
+        </div>
+        <div ng-hide="feedback.text == ''">
+            <textarea class="form-control feedbackField"
+                      ng-style="{'border-color':overviewCtrl.voteColors[feedback.successStatus] }"
+                      disabled name="text"
+                      ng-model="feedback.text"
+                      msd-elastic></textarea>
+        </div>
+    </div>
+</div>

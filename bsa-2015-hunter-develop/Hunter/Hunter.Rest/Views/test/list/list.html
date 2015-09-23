@@ -1,0 +1,22 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <table class="table">
+                <tr>
+                    <th>Added</th>
+                    <th>Link</th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="test in testListCtrl.tests" ng-class="testListCtrl.getClassForTr(test.feedbackStatus)">
+                    <td>{{test.added | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                    <td>
+                        <a href="{{testListCtrl.getUrlOnTest(test.vacancyId,test.candidateId)}}">go to test!</a>
+                    </td>
+                    <td>
+                        <button ng-hide="test.isChecked == true" class="btn btn-default" ng-click="testListCtrl.changeCheckedTest(test.id)">Checked!</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

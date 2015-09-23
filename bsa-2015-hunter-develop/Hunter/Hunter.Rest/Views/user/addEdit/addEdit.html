@@ -1,0 +1,41 @@
+﻿<div class="container site-content">
+    <div ng-form="form">
+        <div class="row">
+            <div class="col-md-3">
+                <h3>User</h3>
+                <div class="form-group" ng-class="{'has-warning': !form.Login.$valid}">
+                    <label for="Login">Login/E-mail</label>
+                    <input type="text" name="Login" class="form-control"
+                           id="Login" placeholder="Enter login"
+                           ng-model="userAddEditCtrl.entity.login" required />
+                    <span ng-show="form.Login.$error.required" class="help-block">Required</span>
+                </div>
+
+                <div class="form-group" ng-class="{'has-warning': !form.Alias.$valid}">
+                    <label for="Alias">Alias</label>
+                    <input type="text" name="Alias" class="form-control"
+                           id="Pager" placeholder="short login alias here"
+                           ng-model="userAddEditCtrl.entity.alias" />
+                </div>
+
+                <div class="form-group" ng-class="{'has-warning': !form.Position.$valid}">
+                    <label for="Position">Position</label>
+                    <input type="text" name="Position" class="form-control"
+                           id="Position" placeholder="Enter position"
+                           ng-model="userAddEditCtrl.entity.position" required />
+                    <span ng-show="form.Position.$error.required" class="help-block">Required</span>
+                </div>
+                <p class="text-info" ng-hide="userAddEditCtrl.entityId == 0">
+                    <i>Added at {{userAddEditCtrl.entity.added}}</i>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 text-left">
+                <button type="button" data-ng-click="userAddEditCtrl.save()" ng-show="userAddEditCtrl.entityId == 0" data-ng-disabled="!form.$valid" class="btn btn-warning">Add</button>
+                <button type="button" data-ng-click="userAddEditCtrl.save()" ng-hide="userAddEditCtrl.entityId == 0" data-ng-disabled="!form.$valid" class="btn btn-primary">Update</button>
+                <button type="button" data-ng-click="userAddEditCtrl.delete()" data-ng-disabled="!form.$valid" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

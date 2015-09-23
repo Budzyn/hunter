@@ -1,0 +1,9 @@
+﻿<div class="container-partial">
+    <div class="col-md-12 ll_preview_appresults"
+         ng-repeat="result in llPreviewCtrl.appResults"
+         style="background-color: {{longListCtrl.stages[result.stage].bgcolor}}"
+         ng-class="{{result.vacancyId}} == {{longListCtrl.vacancy.id}} ? 'll_preview_activ' : ''">
+        <a class="col-md-7" href="#/vacancy/{{result.vacancyId}}/longlist" title="Candidate was added to the vacancy on {{result.date | date:'dd.MM.yyyy'}} ">{{result.vacancy}}</a>
+        <div class="col-md-5">{{longListCtrl.stages[result.stage].name}}</div>
+    </div>
+</div>

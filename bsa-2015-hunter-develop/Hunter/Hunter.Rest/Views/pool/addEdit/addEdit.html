@@ -1,0 +1,38 @@
+﻿<div class="container page-width" ng-controller="PoolAddEditController as poolAddEditCtrl">
+    <div class="pool_container">
+        <div class="pool_title">
+            <div><a class="back back-search" href="" ng-click="poolAddEditCtrl.goBack()" title="Back"></a></div>
+            <h3>{{poolAddEditCtrl.pageConfig.pageTitle}}</h3>
+            <div><a class="close_back" href="" ng-click="poolAddEditCtrl.close()" title="Close"></a></div>
+        </div>
+
+        <div class="pool_form">
+            <form name="editForm">
+                <div class="pool_form_element">
+                    <div>Name:</div>
+                    <input class="form-control" title="Pool name" type="text"
+                           ng-model="poolAddEditCtrl.pool.name" />
+                </div>
+                <div class="pool_form_element">
+                    <div>Select color:</div>
+                    <div class="pool_colors">
+                        <div ng-repeat="color in poolAddEditCtrl.poolColors"
+                             ng-click="poolAddEditCtrl.setColor($event, color.code)"
+                             style="background-color: {{color.code}}" title="{{color.color}}"
+                             ng-class="'{{color.code}}' === '{{poolAddEditCtrl.pool.color}}' ? 'pool_colors_active' : ''">
+                            <input type="checkbox" ng-model="poolAddEditCtrl.pool.color" />
+                        </div>
+                    </div>
+                </div>
+                <div class="pool_form_element">
+                    <input class="pool_btn btn" type="submit" value="{{poolAddEditCtrl.pageConfig.postPutButtonValue}}"
+                           ng-click="poolAddEditCtrl.poolPostPut()" />
+                    <input class="pool_btn btn" type="submit" value="Delete pool"
+                           ng-click="poolAddEditCtrl.poolDelete()"
+                           ng-show="{{poolAddEditCtrl.pageConfig.deleteButton}}" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

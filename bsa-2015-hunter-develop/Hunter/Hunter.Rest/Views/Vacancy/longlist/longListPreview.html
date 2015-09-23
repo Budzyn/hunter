@@ -1,0 +1,52 @@
+﻿<div class="container-partial" ng-controller='LongListPreviewController as llPreviewCtrl'>
+    <div ng-if="llPreviewCtrl.isPreviewShown" class="row ll_preview" spinner="llPreviewCtrl.prevLoad">
+        <div class="col-md-12">
+            <p class="ll_close_button" ng-click="llPreviewCtrl.hideCandidatePreview(llPreviewCtrl.candidateDetails.id)"><span class=" glyphicon glyphicon-remove"></span></p>
+            <h2>Preview</h2>
+            <div class="ll_preview_info">
+<!--                <pool-selector pool-readonly="false" pool-short="false" candidate="llPreviewCtrl.candidateDetails"></pool-selector>-->
+                <div class="ll_preview_info_img">
+                    <shor-list-star is-short="llPreviewCtrl.candidateDetails.shortlisted" candidate-id="llPreviewCtrl.candidateDetails.id" size="'30px'"></shor-list-star>
+                    <img ng-src="{{llPreviewCtrl.candidateDetails.photoUrl}}" alt="{{llPreviewCtrl.candidateDetails.firstName}} {{llPreviewCtrl.candidateDetails.lastName}} foto" title="{{llPreviewCtrl.candidateDetails.firstName}} {{llPreviewCtrl.candidateDetails.lastName}} foto"/>
+                    <pool-selector pool-lazy="true" pool-readonly="true" pool-short="false"
+                                   candidate="llPreviewCtrl.candidateDetails"></pool-selector>
+                </div>
+                <div class="ll_preview_info_all">
+                    <p>
+                        <a href="#/vacancy/{{llPreviewCtrl.vacancyId}}/candidate/{{llPreviewCtrl.candidateDetails.id}}">{{llPreviewCtrl.candidateDetails.firstName + " " + llPreviewCtrl.candidateDetails.lastName}}</a>
+                    </p>
+                    <p>{{llPreviewCtrl.candidateDetails.salary}}</p>
+                    <p title="Resolution / Stage">{{llPreviewCtrl.resolutions[llPreviewCtrl.candidateDetails.resolution].name}} / {{llPreviewCtrl.stages[llPreviewCtrl.candidateDetails.stage].name}}</p>
+                </div>
+                <div class="ll_preview_info_control">
+                </div>
+                <div class="ll_preview_info_control">
+                    <a class="btn btn-default" href="#/vacancy/{{llPreviewCtrl.vacancyId}}/candidate/{{llPreviewCtrl.candidateDetails.id}}">Details</a>
+                    <a class="btn btn-default" href="#/candidate/edit/{{llPreviewCtrl.candidateDetails.id}}">Edit Profile</a>
+                    <button class="btn btn-default" type="button" ng-click="llPreviewCtrl.removeCard(llPreviewCtrl.candidateDetails.id)">Remove from List</button>
+                </div>
+                <div class="col-md-12">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation"
+                            ng-class="{active: llPreviewCtrl.currentTabName == tab.name}"
+                            ng-repeat="tab in llPreviewCtrl.tabs track by $index"
+                            ng-click="llPreviewCtrl.changeTemplate(tab)">
+                            <a role="presentation" data-toggle="tab">{{ tab.name }}</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade in active ll_preview_overview_wrap">
+                            <p ng-hide="llPreviewCtrl.currentTabEmpty">No {{llPreviewCtrl.currentTabName}}
+                            </p>
+                                <div id="card-dynamic" ng-include="llPreviewCtrl.templateToShow"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ll_preview_info_control">
+                    <input class="btn btn-default" type="button" value="View Resume" ng-click="llPreviewCtrl.showResume()" ng-disabled="llPreviewCtrl.candidateDetails.lastResumeUrl==''">
+                    <a class="btn btn-default" ng-show="llPreviewCtrl.candidateDetails.linkedin != null" href="{{llPreviewCtrl.candidateDetails.linkedin}}" target="_blank">View LinkenIn Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

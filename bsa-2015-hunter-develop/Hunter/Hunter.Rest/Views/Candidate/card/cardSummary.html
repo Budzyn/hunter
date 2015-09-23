@@ -1,0 +1,36 @@
+﻿<div ng-controller="CardSummaryController as summaryCtrl">
+    <div class="wrapper">
+<!--        <div class="btn btn-default" ng-click="generalCardCtrl.changeTemplate(tab)">{{summaryCtrl.vacancy.name}}</div>-->
+        <!--<div class="btn btn-default" ng-click="generalCardCtrl.changeTemplate(tab)">All Feedbacks</div>
+    <div class="btn btn-default" ng-click="generalCardCtrl.changeTemplate(tab)">My Feedbacks</div>-->
+        <div class="hrInterview_comments">
+            <div class="hrInterview_form">
+                <form name="summaryForm" ng-submit="summaryCtrl.saveSummary(summaryCtrl.summary.id, summaryCtrl.summary.cardId, summaryCtrl.summary.text, summaryCtrl.summary.type)">
+                    <div>
+                        <div>
+                            <div style="width: auto;">
+                                <h3>{{generalCardCtrl.feedbackTypes[summaryCtrl.summary.type].name}}</h3>
+                            </div>
+                            <div class="vote-group" ng-hide="summaryCtrl.summary.id == 0">
+                                <thumb-button btn-type="btn-success" btn-icon="fa-thumbs-o-up" feedback="summaryCtrl.summary"
+                                              key="Like"></thumb-button>
+                                <thumb-button btn-type="btn-danger" btn-icon="fa-thumbs-o-down" feedback="summaryCtrl.summary"
+                                              key="Dislike"></thumb-button>
+                            </div>
+                            <span ng-hide="summaryCtrl.summary.date == '' || summaryCtrl.summary.id==0">Edited by {{summaryCtrl.summary.userAlias}} {{summaryCtrl.summary.date | date:'dd.MM.yyyy HH.mm'}}</span>
+                        </div>
+                        <textarea class="form-control" ng-readonly="summaryCtrl.summary.feedbackConfig.readOnly" name="text"
+                                  ng-model="summaryCtrl.summary.text" msd-elastic
+                                  ng-style="summaryCtrl.summary.feedbackConfig.style">
+<!--                            {{summaryCtrl.summary.text}}-->
+                        </textarea>
+                    </div>
+                    <div>
+                        <input ng-click="summaryCtrl.toggleReadOnly()" class="btn" type="button" 
+                               value="{{summaryCtrl.summary.feedbackConfig.buttonName}}">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

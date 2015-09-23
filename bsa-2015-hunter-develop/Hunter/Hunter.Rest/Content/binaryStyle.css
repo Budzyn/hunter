@@ -1,0 +1,62 @@
+﻿.navbar {
+    background-color: black;
+}
+
+.navbar:hover {
+    background-color: black;
+}
+
+.dropdown-menu {
+    background-color: black;
+    color: black;
+}
+
+.nav.navbar-nav li a {
+    color: white;
+}
+
+body {
+    background-color: #d8d8d8;
+}
+
+.container {
+    background-color: white;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #ff9a06;
+}
+
+.dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-submenu:hover > a {
+    background-color: black;
+    color: #ff9a06;
+}
+
+.icon-button {
+    font-size: 15px;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus{
+    color: black;
+    background-color: #ff9a06;  
+}
+
+.edit-page-photo {
+    height: 300px;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.site-content {
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.site-menu {
+    padding-left: 0;
+    padding-right: 0;
+}

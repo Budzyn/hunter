@@ -1,0 +1,27 @@
+﻿<div id="addEditNotificationModal" class="modal fade" role="dialog" ng-controller="AddEditNotificationController as addEditCtrl">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add scheduled notification</h4>
+            </div>
+            <div class="modal-body">
+                <label>Notification Date</label>
+                <input type="datetime-local" ng-model="addEditCtrl.newNotification.notificationDate" class="form-control"/>
+                <label>Notification Type</label>
+                <select ng-model="addEditCtrl.notificationType" ng-options="nt.name for nt in addEditCtrl.notificationTypes" class="form-control"></select>
+                <label>Message</label>
+                <textarea class="form-control" ng-model="addEditCtrl.newNotification.message"></textarea>
+                <hr />
+                <div ng-include="'/Views/notification/list/listTemplate.html'"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="addEditCtrl.addNotification()">Ok</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+
+    </div>
+</div>

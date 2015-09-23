@@ -1,0 +1,197 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutWithMainMenu.cshtml";
+}
+<link rel="shortcut icon" type="image/ico" href="~/Content/img/favicon.ico">
+<link href="../../fonts/FontAwesome.otf" rel="MIME"/>
+<link href="../../fonts/fontawesome-webfont.eot" rel="MIME"/>
+<link href="../../fonts/fontawesome-webfont.svg" rel="MIME"/>
+<link href="../../fonts/fontawesome-webfont.ttf" rel="MIME"/>
+<link href="../../fonts/fontawesome-webfont.woff" rel="MIME"/>
+<link href="../../fonts/fontawesome-webfont.woff2" rel="MIME"/>
+<link href="../../Content/font-awesome.min.css" rel="stylesheet"/>
+<link href="~/Content/pool.css" rel="stylesheet"/>
+<link href="~/Content/longlist.css" rel="stylesheet"/>
+<link href="~/Content/hrInterview.css" rel="stylesheet"/>
+<link href="~/Content/candidate.css" rel="stylesheet"/>
+<link href="~/Content/spinnerStyle.css" rel="stylesheet" />
+<link href="~/Content/card/cardTest.css" rel="stylesheet"/>
+<link href="~/Content/alertify.css" rel="stylesheet">
+<link href="~/Content/themes/semantic.css" rel="stylesheet">
+<link href="~/Content/MyStyle.css" rel="stylesheet" />
+<link href="~/Content/poolSelector.css" rel="stylesheet"/>
+<link href="~/Content/binaryStyle.css" rel="stylesheet" />
+
+<div ng-view></div>
+
+<!-- Start bower components -->
+<script src="~/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="~/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src='~/bower_components/angular-route/angular-route.js'></script>
+<script src="~/bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+<script src="~/bower_components/angular-utils-pagination/dirPagination.js"></script>
+<script src="~/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
+@*<script src="~/bower_components/alertifyjs/dist/js/alertify.js"></script>*@
+<script src="~/bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+<script src="~/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script src="~/bower_components/checklist-model/checklist-model.js"></script>
+<script src="~/bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="~/bower_components/angular-elastic/elastic.js"></script>
+<script src="~/Scripts/odataresources.js"></script>
+<script src="~/Scripts/alertify.js"></script>
+<!-- End bower components -->
+
+<!-- Start app -->
+<script src='~/Views/app/app.js'></script>
+<!-- End app -->
+
+<!-- Start helpers -->
+<script src="~/Views/services/helper/authService.js"></script>
+<script src="~/Views/services/helper/httpHandler.js"></script>
+<script src="~/Views/services/helper/authInterceptorService.js"></script>
+<script src="~/Views/services/helper/ActivityIconDirective.js"></script>
+<script src="~/Views/services/helper/candidateStarDirective.js"></script>
+
+<script src="~/Views/directives/thumbButtonDirective.js"></script>
+<script src="~/Views/services/directive/spinnerDirective.js"></script>
+<!-- End helpers -->
+
+<!-- Start constants -->
+<script src="~/Views/services/constants/enumConstants.js"></script>
+<!-- End constants -->
+
+<!-- Start Candidates -->
+<script src="~/Views/services/candidate/candidatesHttpService.js"></script>
+<script src="~/Views/candidate/addEdit/candidateAddEditController.js"></script>
+<script src="~/Views/services/candidate/addEdit/candidateAddEditService.js"></script>
+<script src="~/Views/candidate/list/candidateListController.js"></script>
+<script src="~/Views/candidate/profile/candidateProfileController.js"></script>
+<script src="~/Views/candidate/profile/profileApplicationsController.js"></script>
+<script src="~/Views/candidate/profile/profileSpecialNotesController.js"></script>
+<script src="~/Views/candidate/profile/profileTestsController.js"></script>
+<script src="~/Views/candidate/profile/profileInterviewsController.js"></script>
+<script src="~/Views/candidate/list/candidateListController.js"></script>
+<script src="~/Views/filters/candidates/candidatesListFilter.js"></script>
+<script src="~/Views/candidate/candidateService.js"></script>
+<script src="~/Views/candidate/list/candidateListController.js"></script>
+<script src="~/Views/candidate/profilePartial/candidatePartialController.js"></script>
+<script src="~/Views/services/candidate/profile/candidatePartialProfileService.js"></script>
+<!-- End Candidates -->
+
+<!-- Start Vacancies -->
+<script src="~/Views/vacancy/addEdit/vacancyAddEditController.js"></script>
+<script src="~/Views/vacancy/list/vacancyListController.js"></script>
+<script src="~/Views/vacancy/longlist/longListController.js"></script>
+<script src="~/Views/services/vacancy/vacancyHttpService.js"></script>
+<script src="~/Views/filters/vacancies/vacanciesListFilter.js"></script>
+<script src="~/Views/services/longlist/longlistHttpService.js"></script>
+<script src="~/Views/vacancy/longlist/longListPreviewController.js"></script>
+<script src="~/Views/vacancy/longlist/longListService.js"></script>
+<!-- End Vacancies -->
+
+<!-- Start Statistics -->
+<script src="~/Views/Statistics/statisticsController.js"></script>
+<!-- End Statistics -->
+
+<!-- Start Login -->
+<script src="~/Views/login/loginController.js"></script>
+<script src="~/Views/register/registerController.js"></script>
+<!-- End Login -->
+
+<!-- Start Pools -->
+<script src="~/Views/pool/list/poolListController.js"></script>
+<script src="~/Views/pool/addEdit/poolAddEditController.js"></script>
+<script src="~/Views/services/pool/poolsHttpService.js"></script>
+
+<script src="~/Views/directives/poolSelector.js"></script>
+<script src="~/Views/pool/poolGeneralController.js"></script>
+<!-- End Pools -->
+
+<!-- Start Activities -->
+<script src="~/Views/services/activity/activitiesHttpService.js"></script>
+<script src="~/Views/Activity/list/activityListController.js"></script>
+<script src="~/Views/services/activity/activitiesService.js"></script>
+<!-- End Activities -->
+
+<!-- Start Files -->
+<script src="~/Views/files/list/fileListController.js"></script>
+<script src="~/Views/services/files/uploadResumeService.js"></script>
+<script src="~/Views/services/files/uploadPhotoService.js"></script>
+<!--NEW-->
+<script src="~/Views/services/files/fileHttpService.js"></script>
+<!-- End Files -->
+
+<!-- Start Users -->
+<script src="~/Views/user/userProfileService.js"></script>
+<script src="~/Views/user/list/userListController.js"></script>
+<script src="~/Views/user/addEdit/userAddEditController.js"></script>
+<script src="~/Views/services/user/userHttpService.js"></script>
+<!-- End Users -->
+
+<!-- Start Vacancy -->
+<script src="~/Views/services/helper/httpHandler.js"></script>
+<script src="~/Views/services/vacancy/vacancyHttpService.js"></script>
+<script src="~/Views/Vacancy/list/vacancyListController.js"></script>
+<!-- End Vacancy -->
+
+<!-- Start Roles -->
+<script src="~/Views/role/list/roleListController.js"></script>
+<script src="~/Views/services/userRole/userRoleHttpService.js"></script>
+<!-- End Roles -->
+
+<!-- Candidate Vacancy Card -->
+<script src="~/Views/candidate/card/generalCardController.js"></script>
+<script src="~/Views/candidate/card/cardHrIterviewController.js"></script>
+<script src="~/Views/candidate/card/cardOverviewController.js"></script>
+<script src="~/Views/candidate/card/cardSpecialNotesController.js"></script>
+<script src="~/Views/candidate/card/cardTechnicalInterviewController.js"></script>
+<script src="~/Views/candidate/card/cardTestController.js"></script>
+<script src="~/Views/candidate/card/cardSummaryController.js"></script>
+<script src="~/Views/candidate/card/cardApplicationsController.js"></script>
+<script src="~/Views/candidate/card/cardService.js"></script>
+
+<!--Candidate Vacancy Card Test-->
+<script src="~/Views/services/candidate/card/cardTestHttpService.js"></script>
+<script src="~/Views/services/feedback/feedbackHttpService.js"></script>
+<script src="~/Views/services/files/uploadTestService.js"></script>
+<script src="~/Views/services/directive/filechange.js"></script>
+<!--Candidate Vacancy Card Test-->
+
+<script src="~/Views/services/candidate/specialNote/specialNoteHttpService.js"></script>
+
+<script src="~/Views/services/directive/autoExpandTextareaDirective.js"></script>
+<!-- End Candidate Vacancy Card-->
+
+<!-- Candidate Vacancy Card Feedback -->
+<script src="~/Views/services/feedback/feedbackHttpService.js"></script>
+<script src="~/Views/services/feedback/cardHrInterviewService.js"></script>
+<!---->
+
+<!--Start Index-->
+<script src="~/Views/Home/indexController.js"></script>
+<script src="~/Views/services/home/indexHttpService.js"></script>
+<!--End Index-->
+
+<!-- Start Scheduled Notifications -->
+<script src="~/Views/notification/list/notificationListController.js"></script>
+<script src="~/Views/notification/addEdit/addEditNotificationController.js"></script>
+<script src="~/Views/services/notification/notificationHttpService.js"></script>
+<!-- End Scheduled Notifications -->
+
+<!-- Start Card-->
+<script src="~/Views/services/card/cardHttpService.js"></script>
+<!-- End Card-->
+
+<!-- Start Test -->
+<script src="~/Views/services/test/testHttpService.js"></script>
+<script src="~/Views/services/test/testService.js"></script>
+<script src="~/Views/test/list/testListController.js"></script>
+<!-- Start Test -->
+
+<!-- Filters Start-->
+<script src="~/Views/filters/localDateFilter.js"></script>
+<!-- Filters End -->
+<script>
+    angular.bootstrap(document, ['hunter-app']);
+</script>

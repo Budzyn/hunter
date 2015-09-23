@@ -1,0 +1,48 @@
+{
+  "name": "Hunter",
+  "version": "0.0.1",
+  "authors": [
+    "Beseda Dmitriy <BesedaDG@gmail.com>",
+    "Anton Vasilenko <toxa07@gmail.com>",
+    "Serkov Ihor <Serkov.ihor@gmail.com>",
+    "Oleksandr Kaduk <o.kaduk@gmail.com>",
+    "Igor Gerasimiv <igorgerasymiv@gmail.com>",
+    "Ilya Plotnikov <iplotnikov94@gmail.com>",
+    "Myroslav Dmytrus <myroslavdm@gmail.com>",
+    "Evich Sergei <zalza91@gmail.com>",
+    "Chudnovec Andrei <andrewcontys@gmail.com>",
+    "Kushch Oleg <kuw-kuw@mail.ru>",
+    "Babkin Alekesey <aloha-bit@mail.ru>",
+    "Taras Mychats <tarasmychats@gmail.com>",
+    "Turash Yuriy <yrik.turash@gmail.com>",
+    "Maksim Podolyuh <po_max@mail.ua>",
+    "Budzyn Jaroslav <black_witcher@ukr.net>"
+  ],
+  "license": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.1",
+    "angular-route": "~1.4.1",
+    "underscore": "~1.8.3",
+    "angular-resource": "~1.4.1",
+    "bootstrap": "~3.3.5",
+    "angular-bootstrap": "~0.13.3",
+    "angular-local-storage": "~0.2.2",
+    "angular-utils-pagination": "~0.8.3",
+    "jasny-bootstrap": "~3.1.3",
+    "ng-file-upload": "~6.0.4",
+    "checklist-model": "~0.4.0",
+    "angular-animate": "1.4.3",
+    "angular-elastic": "~2.5.0"
+  },
+  "resolutions": {
+    "angular": ">=1.1.4"
+  }
+}

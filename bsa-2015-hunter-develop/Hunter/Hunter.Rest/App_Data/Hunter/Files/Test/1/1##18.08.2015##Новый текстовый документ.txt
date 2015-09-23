@@ -1,0 +1,6 @@
+denis_b_binary
+
+bower install angular-utils-pagination --save
+http://localhost:53147/#/pool
+
+bb5bc24

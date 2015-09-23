@@ -1,0 +1,44 @@
+﻿<div spinner="notificationListCtrl.showSpinner">
+    <div ng-show="!notificationListCtrl.isModal && notificationListCtrl.notifications.length == 0">
+        <h4>You don't have any notifications</h4>
+    </div>
+    <table class="table table-striped table-hover table-responsive" ng-hide="notificationListCtrl.isModal || notificationListCtrl.notifications.length == 0">
+        <tr class="tr-vert-center">
+            <td><label>Type</label></td>
+            <td><label>Date</label></td>
+            <td ng-hide="{{notificationListCtrl.isModal}}"><label>Candidate</label></td>
+            <td><label>Message</label></td>
+            <td><label>Sent</label></td>
+            <td><label>Viewed</label></td>
+            <td></td>
+        </tr>
+        <tr dir-paginate="notification in notificationListCtrl.notifications | itemsPerPage: vacancyListCtrl.filter.pageSize"
+            total-items="vacancyListCtrl.totalCount" current-page="vacancyListCtrl.filter.page" class="tr-vert-center">
+            <td><i class="glyphicon {{notificationListCtrl.notificationTypes[notification.notificationType].icon}}"></i></td>
+            <td>{{notification.notificationDate | localDate | date:'dd.MM.yyyy HH:mm'}}</td>
+            <td ng-hide="{{notificationListCtrl.isModal}}"><a href="#/candidate/{{notification.candidateId}}">{{notification.candidateName}}</a></td>
+            <td>{{notification.message}}</td>
+            <td><input type="checkbox" ng-checked="{{notification.isSent}}" ng-disabled="true"/></td>
+            <td><input type="checkbox" ng-checked="{{notification.isShown}}" ng-disabled="true"/></td>
+            <td><span class="glyphicon glyphicon-trash" title="Remove notification" ng-click="notificationListCtrl.deleteNotification($index)"></span></td>
+        </tr>
+    </table>
+    <div ng-hide="notificationListCtrl.isModal || notificationListCtrl.notifications.length == 0">
+        <div class="pagination page-count-wrapper form-inline">
+            <span>Items on page</span>
+            <select class="form-control"
+                    ng-model="notificationListCtrl.filter.pageSize"
+                    ng-change="notificationListCtrl.loadNotifications()">
+                <option ng-repeat="i in [5, 10, 25, 50, 100]">{{i}}</option>
+            </select>
+        </div>
+        <pagination total-items="notificationListCtrl.totalCount"
+                    ng-model="notificationListCtrl.filter.page"
+                    items-per-page="notificationListCtrl.filter.pageSize"
+                    max-size="5"
+                    ng-click="notificationListCtrl.loadNotifications()"
+                    class="pagination-sm"
+                    boundary-links="true"
+                    template-url="../../Views/templates/pagination.html"></pagination>
+    </div>
+</div>

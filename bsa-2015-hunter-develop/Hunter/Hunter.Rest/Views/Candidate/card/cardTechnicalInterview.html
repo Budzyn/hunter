@@ -1,0 +1,67 @@
+﻿<div ng-controller="CardTechnicalInterviewController as techInterviewCtrl">
+    <div class="hrInterview_wrap">
+        <div class="row">
+            <ul class="nav nav-pills">
+                <li ng-if="generalCardCtrl.isLLM" class="active">
+                    <a data-toggle="pill" ng-click="techInterviewCtrl.getFeedbacks()">
+                        {{techInterviewCtrl.vacancy.name}}
+                    </a>
+                </li>
+                <li><a data-toggle="pill" ng-click="techInterviewCtrl.getAllFeedbacks()">All Feedbacks</a></li>
+                <li><a data-toggle="pill" ng-click="techInterviewCtrl.getMyFeedbacks()">My Feedbacks</a></li>
+                <li><a ng-if="generalCardCtrl.isLLM" ng-click="techInterviewCtrl.showAddBlock= !techInterviewCtrl.showAddBlock" title="Add new Feedback"><span class="fa fa-2x fa-plus-circle"></span></a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div ng-show="techInterviewCtrl.showAddBlock" class="row">
+            <br/>
+            <div ng-form="form">
+                <div class="form-group" ng-class="{'has-warning': !form.NoteText.$valid}">
+                    <textarea name="text" class="form-control"
+                              ng-model="techInterviewCtrl.newTechFeedbackText" 
+                              msd-elastic required placeholder="Enter new feedback"></textarea>
+                    <span ng-show="form.text.$error.required" class="help-block">Required</span>
+                </div>
+                <button class="btn btn-success" type="submit"
+                        ng-click="techInterviewCtrl.saveFeedback(techInterviewCtrl.newTechFeedbackText, true)"
+                        data-ng-disabled="!form.$valid">
+                    Add
+                </button>
+            </div>
+        </div>
+
+
+        <div class="hrInterview_comments">
+            <div class="hrInterview_form" ng-repeat="item in techInterviewCtrl.techFeedbacks | orderBy: '-date'">
+                <form name="feedbackForm" >
+                    <div>
+                        <div>
+                            <div style="width: auto;">
+                                <h3 style="display: inline">{{generalCardCtrl.feedbackTypes[item.type].name}} {{techInterviewCtrl.vacancy.name != item.vacancy && item.vacancy != null ? 'from ' + feedback.vacancy :''}}</h3>
+                            </div>
+                            <div class="vote-group" ng-hide="item.id == 0">
+                                <thumb-button btn-type="btn-success" btn-icon="fa-thumbs-o-up"
+                                              feedback="item"
+                                              key="Like"></thumb-button>
+                                <thumb-button btn-type="btn-danger" btn-icon="fa-thumbs-o-down"
+                                              feedback="item"
+                                              key="Dislike"></thumb-button>
+                            </div>
+                            <span ng-hide="item.date == '' || item.id==0">Updated by {{item.userAlias}} {{item.date | date:'dd.MM.yyyy HH.mm'}} </span>
+                        </div>
+                        <textarea class="form-control" ng-readonly="!item.editMode"
+                                  name="text" ng-model="item.text"
+                                  ng-style="{'border-color':techInterviewCtrl.voteColors[item.successStatus] }"
+                                  msd-elastic>{{item.text}}</textarea>
+                    </div>
+                    <div>
+                        <button ng-click="techInterviewCtrl.updateFeedback(item)"
+                               class="btn" type="button">{{item.editMode == true ?'Save':'Edit' }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+﻿<div class="container">
+    <h3>{{fileListCtrl.controllerName}}</h3>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>File</th>
+            <th>Added</th>
+        </tr>
+        <tr ng-repeat="file in fileListCtrl.files">
+            <td><a href="api/file/download/{{file.id}}">{{file.path}}{{file.fileName}}</a></td>
+            <td>{{file.added | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+        </tr>
+    </table>
+</div>

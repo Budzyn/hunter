@@ -1,0 +1,59 @@
+﻿<div class="container">
+    <h2>{{ActivityListCtrl.name}}</h2>
+    <!--<div class="col-md-6">
+        <ol ng-repeat="item in ActivityListCtrl.activityList">
+            <li>{{item.userLogin}}-{{item.tag}}-{{item.message}}-{{item.time}}</li>
+        </ol>
+    </div>-->
+    <div class="row">
+        <div class="col-md-3 filte-form-wrapper" spinner="ActivityListCtrl.filterSpinner">
+            <div class="filter-settings">
+                <div><strong>Filter</strong></div>
+                <ul>
+                    <li>User
+                        <ul>
+                            <li ng-repeat="u in ActivityListCtrl.filterUsers">
+                                <input type="checkbox" ng-click="ActivityListCtrl.update()" checklist-model="ActivityListCtrl.filter.users" checklist-value="u.name"> {{u.name}} <span>({{u.count}})</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Tag Type
+                        <ul>
+                            <li ng-repeat="t in ActivityListCtrl.filterTags">
+                                <input type="checkbox" ng-click="ActivityListCtrl.update()" checklist-model="ActivityListCtrl.filter.tags" checklist-value="t.name"> {{t.name}} <span>({{t.count}})</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9" spinner="ActivityListCtrl.listSpinner">
+            <table class="table table-striped table-hover table-responsive">
+                <tr ng-repeat="item in ActivityListCtrl.activitiesList">
+                    <td>{{item.userAlias}}</td>
+                    <td>
+                        <a href="{{item.url}}">{{item.message}}</a>
+                    </td>
+                    <td>{{item.time | date:'dd-MM-yyyy HH:mm'}}</td>
+                    <td>
+                        <div activity-type="{{item.tag}}"></div>
+                    </td>
+                </tr>
+            </table>
+            <div class="pagination page-count-wrapper form-inline">
+                <span>Items on page</span>
+                <select class="form-control" ng-change="ActivityListCtrl.update()" ng-options="item as item for item in ActivityListCtrl.itemsOnPage.items" ng-model="ActivityListCtrl.filter.pageSize"></select>
+            </div>
+            <pagination total-items="ActivityListCtrl.totalItems"
+                        ng-model="ActivityListCtrl.filter.currentPage"
+                        ng-click="ActivityListCtrl.update()"
+                        items-per-page="ActivityListCtrl.filter.pageSize"
+                        max-size="5"
+                        class="pagination-sm"
+                        boundary-links="true"
+                        template-url="../../Views/templates/pagination.html">
+            </pagination>
+        </div>
+    </div>
+    
+</div>

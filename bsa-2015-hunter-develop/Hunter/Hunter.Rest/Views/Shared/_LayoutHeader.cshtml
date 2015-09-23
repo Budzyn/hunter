@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link type="text/css" rel="stylesheet"  href="@Url.Content("~/Content/MyStyle.css")"/>
+    @RenderSection("css", false)
+</head>
+<body>
+    <header class="top-header">
+        <ul class="main-menu">
+            <li><a href="#">Home</a></li>
+            <li>
+                <a href="#">Candidates</a>
+                <ul class="sub-menu">
+                    <li><a href="#1">Add new</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Campaigns</a></li>
+            <li><a href="#">Statistics</a></li>
+            <li><a href="#">Files</a></li>
+            <li>
+                <a href="#">Settings</a>
+                <ul class="sub-menu">
+                    <li><a href="#">Pools</a></li>
+                    <li><a href="#">Users</a></li>
+                    <li><a href="#">Roles</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="block-activity">
+            Activity
+            <span class="activity-number">
+                20
+            </span>
+            <div style="clear:both;"></div>
+        </div>
+    </header>
+    @RenderBody()
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

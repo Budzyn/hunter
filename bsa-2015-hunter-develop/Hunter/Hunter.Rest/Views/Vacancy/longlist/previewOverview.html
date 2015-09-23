@@ -1,0 +1,9 @@
+﻿<div class="container-partial">
+    <div class="ll_preview_overview" ng-repeat="overview in llPreviewCtrl.overviews" ng-hide="overview.text == ''">
+        <div class="title">
+            <h5>{{llPreviewCtrl.feedbackTypes[overview.type].name}}</h5>
+            <p>({{overview.userAlias}}, {{overview.date | date:'dd.MM.yyyy HH.mm'}})</p>
+        </div>
+        <div class="text">{{overview.text}}</div>
+    </div>
+</div>

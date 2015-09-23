@@ -1,0 +1,37 @@
+﻿.pool-label {
+    width: auto; 
+    float: left;
+    margin-left: 3px;
+    padding: 0 5px;
+    border-radius: 5px;
+}
+
+.pool-label-short {
+    width: 50px;
+    height: 13px;
+    float: left;
+    margin-left: 3px;
+    border-radius: 5px;
+}
+
+.pool-label-container {
+    float: left; 
+    width: auto; 
+    display: inline-block;
+}
+
+.pool-widget-container {
+    position: absolute;
+    width: auto;
+    background-color: white;
+    z-index: 100;
+}
+
+.pool-selector-btn {
+    height: 20px;
+}
+
+.pool-selector-btn-icon {
+    position: relative;
+    bottom: 6px;
+}

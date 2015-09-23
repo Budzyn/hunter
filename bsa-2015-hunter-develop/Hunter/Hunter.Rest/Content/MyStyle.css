@@ -1,0 +1,269 @@
+﻿* {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
+.margin-bottom {
+    margin-bottom: 15px;
+}
+
+li {
+    list-style-type: none;
+}
+
+.top-header {
+    margin: 0 auto;
+    width: 80%;
+    min-width: 1024px;
+}
+
+.main-menu {
+    display: block;
+    float: left;
+    height: 100%;
+    width: 80%;
+    list-style: none;
+    background-color: #1D9064;
+}
+
+    .main-menu > li {
+        position: relative;
+        display: inline-block;
+        margin-right: -4px;
+    }
+
+    .main-menu a {
+        display: block;
+        padding: 8px 10px;
+        margin-left: -1px;
+        color: #ffffff;
+    }
+
+    .main-menu li:hover {
+        text-decoration: underline;
+        background-color: #0E6B48;
+    }
+
+    .main-menu .sub-menu {
+        display: none;
+        position: absolute;
+        width: 150px;
+        left: 1px;
+        top: 33px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        background: #0E6B48;
+    }
+
+        .main-menu .sub-menu a {
+            border: 1px solid #ffffff;
+            margin-bottom: -1px;
+        }
+
+    .main-menu > li:hover .sub-menu {
+        display: block;
+    }
+
+.block-activity {
+    width: 18%;
+    height: 100%;
+    float: right;
+    padding: 8px 10px;
+    background-color: #1D9064;
+    text-align: center;
+    color: #ffffff;
+    box-sizing: border-box;
+}
+
+    .block-activity .activity-number {
+        background-color: #D46C2B;
+        padding: 6px;
+        border-radius: 7px;
+        text-align: center;
+    }
+
+/*Menu*/
+.menu {
+    position: relative;
+}
+
+    .menu:hover .submenu {
+        display: block;
+    }
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    padding: 5px 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+
+    .submenu > li > a {
+        display: block;
+        padding: 3px 20px;
+        clear: both;
+        font-weight: normal;
+        line-height: 1.42857143;
+        color: #333;
+        white-space: nowrap;
+        text-decoration: none;
+    }
+
+        .submenu > li > a:hover,
+        .submenu > li > a:focus {
+            color: #ffffff;
+            text-decoration: none;
+            background-color: #b0b0b0;
+        }
+
+/*Candidates list*/
+.longlist-wrapper {
+    margin-top: 25px;
+}
+
+.list-pagination {
+    margin: 0;
+}
+
+.filter-settings {
+    border: 1px solid #ddd;
+}
+
+    .filter-settings > ul {
+        list-style: none;
+        padding-left: 20px;
+    }
+
+        .filter-settings > ul ul {
+            margin-left: 20px;
+        }
+
+.preview-profile-photo {
+    height: 150px;
+    width: 150px;
+}
+
+/*Candidate page*/
+.candidate-info {
+    /*	margin-left: 170px;*/
+}
+
+.profile-photo {
+    height: 200px;
+    width: 200px;
+}
+.image {
+    width:500px;
+}
+
+.candidate-name {
+    font-size: 30px;
+    padding: 5px;
+}
+
+.filter-settings, .note-info-conteiner, .note-info-nav li {
+    border: 1px solid #ddd;
+}
+
+    .salary-wrapper, .candidate-name, .note-info-nav .active, .note-info-nav li:hover {
+        background: #ddd;
+    }
+
+.salary-wrapper {
+    font-size: 30px;
+    text-align: center;
+}
+
+.btn-veiw-resume {
+    margin-top: 30px;
+}
+
+.notes-table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+    .notes-table td {
+        padding: 4px;
+        border-bottom: 10px solid #FFF;
+    }
+
+.passed td {
+    background: rgba(0, 255, 0, 0.5);
+}
+
+.failed td {
+    background: rgba(255, 0, 0, 0.3);
+}
+
+
+.note-info-nav {
+    margin: 25px -15px;
+}
+
+    .note-info-nav li {
+        padding: 8px;
+    }
+
+/*=======*/
+.col-md-4 {
+    /*font: 13pt bold ;*/
+    /*margin-top: 10px;*/
+}
+
+.button-done {
+    text-align: right;
+}
+
+.vacancy-list {
+    font-size: 20px;
+}
+
+.edit-page-photo {
+    width: 100%;
+    height: 100%;
+}
+
+.photo-in-list {
+    width: 50px;
+    height: auto;
+}
+
+/*pagination*/
+
+.page-count-wrapper{
+    margin-right: 5px;
+}
+    .page-count-wrapper > select {
+        height: 30px;
+    }
+/*partia candidate detailes in candidate list*/
+.partial-candidate-details {
+    position: fixed;
+    top: 52px;
+    right: 0%;
+    z-index: 10;
+    background-color: white;
+}
+.partial-candidate-details.ng-hide-add, .partial-candidate-details.ng-hide-remove {
+  transition: all linear 0.5s;
+  -webkit-transition:all linear 0.5s;
+
+}

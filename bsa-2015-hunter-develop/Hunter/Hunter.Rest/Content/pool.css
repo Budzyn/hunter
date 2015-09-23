@@ -1,0 +1,168 @@
+﻿.page-width {
+    width: 380px;
+}
+
+.pool_container {
+    width: 350px;
+    float: left;
+    border: 1px solid darkgray;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.pool_container * {
+    width: 100%;
+    float: left;
+}
+
+.pool_title {
+    height: 50px;
+    border-bottom: 2px solid darkgray; 
+}
+
+.pool_title * {
+    height: 100%;
+    float: left;
+    line-height: 50px;
+    display: inline-block;
+    text-align: center;
+}
+.pool_title>div {
+    width: 15%; 
+}
+.pool_title>h3{
+    padding: 0px;
+    margin: 0px;
+    width: 70%;  
+}
+.pool_title .close_back {
+    background-image: url(../resources/arrows_close.png);   
+}
+
+.pool_title .back {
+    background-image: url(../resources/arrows_left.png);
+}
+
+.pool_title a {
+    background-position: 50% 50%;
+    background-size: cover;
+    opacity: 0.2;
+}
+
+.pool_title a:hover {
+    cursor: pointer;
+    opacity: .7;
+}
+.pool_form {
+    padding: 15px 0px;
+}
+
+.pool_form input[type=submit] {
+    width: 130px;
+}
+
+.pool_form_element div, pool_form_element div {
+    font-weight: bold;
+}
+
+.pool_form input[type=submit]:last-child {
+    float: right;
+}
+
+.pool_btn.btn:hover, .btn:hover {
+    background-color: #66afe9;
+    border: solid 1px #66afe9;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+.pool_list {
+    margin-top: 15px;
+}
+.pool_btn.btn {
+    width: 130px;
+    background-color: rgb(221, 221, 221);
+    color: rgb(51, 51, 51);
+}
+
+.column_data {
+    margin-top: 10px;
+    list-style-type: none;
+}
+.pool-type{
+    width: 85%;
+    border: 1px solid rgb(204, 204, 204);
+    box-shadow: 0 0 2px rgb(92, 92, 92);
+    text-align: center;
+    height: 34px;
+    line-height: 34px;
+    border-radius: 3px;
+}
+
+.pool-check {
+    width: 10px;
+    position: absolute;
+    right: 25%;
+    padding-top: 5px;
+}
+
+.column_data a{
+    width: 15%;
+    height: 34px;
+    line-height: 34px;
+    padding-left: 10px;
+    background-image: url(../resources/arrows_right.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    opacity: .2;
+    background-size: cover;
+}
+
+.column_data a:hover {
+    cursor: pointer;
+    opacity: .7;
+}
+
+.pool_colors {
+    width: 100%;
+    float: left;
+    height: 34px;
+}
+
+.pool_form_element {
+    margin-top: 15px;
+}
+
+.pool_colors>div {
+    height: 100%;
+    width: 34px;
+    margin-right: 10px;
+}
+.pool_colors>div:last-child {
+    margin-right: 0px;
+}
+
+.pool_colors>div:hover, .pool_colors_active
+{
+    opacity: 0.6;
+    cursor: pointer;
+    border: solid 2px #66afe9;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+.pool_colors_inactive
+{
+    opacity:initial;
+    border: none;
+    box-shadow: none;
+}
+
+.pool_colors input {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+}
+
+.pool_colors input:hover {
+    cursor: pointer;
+}

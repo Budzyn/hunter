@@ -1,0 +1,212 @@
+﻿.ll_preview{
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding: 5px;
+    position: relative;
+    overflow: hidden;
+}
+.ll_preview h2{
+    padding: 10px 0;
+    font-weight: bold;
+    font-size: 18px;
+    border-bottom: 1px solid gray;
+    margin: 0 0 5px 0;
+}
+.ll_preview .col-md-12 {
+    padding: 0;
+}
+.ll_preview .treasure-overlay-spinner-content {
+    overflow: hidden;
+}
+
+.ll_candidate_item {
+    padding: 5px;
+    float: left;
+    width: 100%;
+    border: 1px solid grey;
+    border-radius: 3px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+.ll_candidate_item p {
+    margin: 0;
+}
+.ll_candidate_item p:first-child {
+    margin: 9px 0;
+}
+.ll_candidate_item:hover{
+    border: 4px solid grey;
+    padding: 2px;
+}
+.ll_candidate_item a:hover{
+    cursor: pointer;
+}
+.ll_candidate_item_active{
+    background-color: rgb(217, 237, 247);
+}
+.ll_candidate_item .ll_candidate_item_img {
+    position: relative;
+    padding: 5px;
+    max-width: 70px;
+}
+.ll_candidate_item_img img {
+    background-color: aliceblue;
+    border-radius: 30px;
+    border-style:none;
+    width: 60px;
+    height: 60px;
+    border: 0;
+}
+.ll_candidate_item_img .years_of_experience{
+    position: absolute;
+    background: yellowgreen;
+    width: 20px;
+    height: 15px;
+    font-size: 11px;
+    top: 0px;
+    right: 0px;
+    text-align: center;
+    border-radius: 5px;
+    margin: 0;
+}
+.ll_candidate_item_img .candidate_bookmark {
+    position: absolute;
+    width: 25px;
+    height: 20px;
+    bottom: 0px;
+    right: 0px;
+    text-align: center;
+    border-radius: 5px;
+    margin: 0;
+    font-size: 20px;
+}
+.candidate_item_salary {
+    max-width: 70px; 
+}
+.pagination {
+     float: left;
+}
+.ll_preview_info {
+    width: 100%;
+    float: left;
+}
+.ll_preview_info_img {
+    float: left;
+    position: relative;
+}
+.ll_preview_info_all {
+    float: left;
+    font-size: 26px;
+    margin-left: 10px;
+    max-width: 250px;
+}
+.ll_preview_info_all p {
+    margin: 0 0 5px;    
+}
+.ll_preview_info_all p:last-child {
+    font-size: 16px;
+}
+.ll_preview_info_all p:first-child {
+    font-weight: bold;
+}
+.ll_preview_info_img img {
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+    background-color: aliceblue;
+}
+.ll_preview_info_control {
+    margin: 10px 0;
+    float: left;
+    width: 100%;
+}
+.ll_preview_info_control .btn {
+    float: left;
+    background-color: rgb(221, 221, 221);
+    color: rgb(51, 51, 51);
+    width: auto;
+    margin-right: 5px;
+    font-size: 12px;
+    height: 28px;
+}
+.ll_close_button {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 9px;
+    top: 3px;
+    font-size: 25px;
+    opacity: .2;
+}
+.ll_close_button:hover {
+    cursor: pointer;
+    opacity: .5;
+}
+.ll_preview_info_comments {
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.ll_preview_info_comments h3{
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 10px;
+}
+.ll_preview_info_comments p {
+    border-bottom: 1px solid gray;
+}
+.ll_preview_info_comments p:last-child {
+    border-bottom: none;
+    margin: 0;
+}
+.ll_preview_overview_wrap {
+    overflow: hidden;
+    padding: 10px 5px 0;
+    border: 1px solid #ddd;
+    border-top: none;
+}
+.ll_preview_appresults{
+    margin-bottom: 10px;
+}
+.ll_preview_overview {
+    float: left;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.ll_preview_activ{
+    border: 1px solid gray;
+    font-weight: bold;
+}
+.ll_preview_overview *{
+    float: left;
+    width: 100%;
+}
+.ll_preview_overview .title {
+    position: relative;
+}
+.ll_preview_overview .title h5{
+    width: 50%;
+    margin: 0;
+    font-size: 16px;
+    min-height: 16px;
+}
+.ll_preview_overview .title p{
+    width: 50%;
+    font-size: 12px;
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+}
+.ll_preview_overview .text {
+    border: solid 1px gray;
+    border-radius: 2px;
+    background-color: #eee;
+    padding: 2px;
+}
